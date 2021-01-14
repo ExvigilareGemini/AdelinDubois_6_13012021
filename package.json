@@ -1,0 +1,27 @@
+{
+  "name": "adelindubois_6_13012021",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass --watch ./assets/sass/main.scss:./assets/css/style.css",
+    "prefix": "postcss ./assets/css/style.css --use autoprefixer -d ./assets/css/prefixed/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ExvigilareGemini/AdelinDubois_6_13012021.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ExvigilareGemini/AdelinDubois_6_13012021/issues"
+  },
+  "homepage": "https://github.com/ExvigilareGemini/AdelinDubois_6_13012021#readme",
+  "browserslist": "last 4 versions",
+  "devDependencies": {
+    "eslint": "^7.17.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1"
+  }
+}
