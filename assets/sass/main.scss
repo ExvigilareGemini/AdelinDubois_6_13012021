@@ -1,13 +1,16 @@
 // utils
-
+@import "./utils/variables";
+@import "./utils/maps";
 // vendors
 
 // base
-
+@import "./base/body";
+@import "./base/typo";
 // components
-
+@import "./components/photograph";
+@import "./components/tag";
 // layouts
-
+@import "./layouts/header";
 // pages
-
+@import "./pages/acceuil";
 // themes

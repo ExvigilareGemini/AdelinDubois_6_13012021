@@ -1,1 +1,111 @@
+.body {
+  width: 100%;
+  margin: 0;
+}
+
+* {
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  color: #901c1c;
+}
+
+p {
+  margin: 3px;
+}
+
+.photograph {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+.photograph__cadre {
+  position: relative;
+  width: 50vw;
+  height: 50vw;
+  border-radius: 100%;
+  overflow: hidden;
+}
+.photograph__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.photograph__link {
+  position: absolute;
+  width: 100%;
+  height: 115%;
+  z-index: 10;
+}
+.photograph__name {
+  font-size: 30px;
+  color: #D3573C;
+  margin-bottom: 5px;
+}
+.photograph__textparagraph {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: bold;
+}
+.photograph__textparagraph__slogan {
+  color: #525252;
+  font-size: 10px;
+}
+.photograph__textparagraph__price {
+  color: #9f9f9f;
+  font-size: 10px;
+}
+
+.tag {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-grow: 1;
+  width: 100%;
+  margin: 0;
+}
+.tag__link {
+  text-decoration: none;
+  font-weight: bold;
+  border: solid 1px #ebebeb;
+  border-radius: 25px;
+  padding: 3px 8px;
+  margin: 3px 3px;
+}
+.tag__link--smaller {
+  font-size: 10px;
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.header__imagelink {
+  position: relative;
+  width: 100%;
+  margin: 30px 0 30px 25px;
+}
+.header__imagelink__link {
+  display: block;
+  position: absolute;
+  width: 40%;
+  height: 100%;
+}
+.header__imagelink__image {
+  width: 40%;
+}
+
+.anchor {
+  position: absolute;
+  opacity: 0;
+}
+
+.main__header {
+  position: absolute;
+  top: 30px;
+  right: 25px;
+}
+
 /*# sourceMappingURL=style.css.map */

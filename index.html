@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FishEye</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="body">
 
     <!-- ANCHOR -->
     <a href="#main" class="anchor">Passer au contenu</a>
@@ -16,21 +19,18 @@
         <div class="header__imagelink">
             <a href="index.html" class="header__imagelink__link"></a>
             <img src="./assets/src/FishEye_Logo.png" alt="Fisheye home page" class="header__imagelink__image">
-            <link rel="stylesheet" href="./assets/css/style.css">
         </div>
-        <!-- NAVIGATION -->
-        <nav class="nav" aria-label="photographer categories">
-            <ul>
-                <li class="nav__tag">    <a href="#" class="nav__tag__link">#Portrait</a>      </li>
-                <li class="nav__tag">    <a href="#" class="nav__tag__link">#Art</a>           </li>
-                <li class="nav__tag">    <a href="#" class="nav__tag__link">#Fashion</a>       </li>
-                <li class="nav__tag">    <a href="#" class="nav__tag__link">#Architecture</a>  </li>
-                <li class="nav__tag">    <a href="#" class="nav__tag__link">#Travel</a>        </li>
-                <li class="nav__tag">    <a href="#" class="nav__tag__link">#Sport</a>         </li>
-                <li class="nav__tag">    <a href="#" class="nav__tag__link">#Animals</a>       </li>
-                <li class="nav__tag">    <a href="#" class="nav__tag__link">#Events</a>        </li>
-            </ul>
-        </nav>
+        <!-- TAGS -->
+        <div class="tag" aria-label="photographer categories">
+           <a href="#" class="tag__link">#Portrait</a>      
+           <a href="#" class="tag__link">#Art</a>           
+           <a href="#" class="tag__link">#Fashion</a>       
+           <a href="#" class="tag__link">#Architecture</a>  
+           <a href="#" class="tag__link">#Travel</a>        
+           <a href="#" class="tag__link">#Sport</a>         
+           <a href="#" class="tag__link">#Animals</a>       
+           <a href="#" class="tag__link">#Events</a>        
+        </div>
     </header>
 
     <!-- MAIN -->
@@ -42,21 +42,26 @@
         <!-- MINIATURES PHOTOGRAPHS -->
         <article class="photograph">
             <!-- IMAGE LINK -->
-            <a href="#" class="photograph__imagelink">
-                <img src="./assets/src/Sample_Photos/Mimi/Portrait_Nora.jpg" alt="" class="photograph__imagelink__image">
-                <h2 class="photograph__imagelink__name">Mimi Keel</h2>
-            </a>
+            <div class="photograph__cadre">
+                <a href="#" class="photograph__link"></a>
+                <img src="./assets/src/Sample_Photos/Marcel/Travel_Tower.jpg" alt="" class="photograph__image">
+            </div>
+            <!-- NAME -->
+            <h2 class="photograph__name">Mimi Keel</h2>
             <!-- TEXT PARAGRAPH -->
             <div class="photograph__textparagraph">
-                <p class="photograph__textparagraph__">London, UK</p>
+                <p class="photograph__textparagraph__localisation">London, UK</p>
                 <p class="photograph__textparagraph__slogan">Voir le beau dans le quotidien</p>
-                <p class="photograph__textparagraph__">400€/jour</p>
+                <p class="photograph__textparagraph__price">400€/jour</p>
             </div>
             <!-- TAGS -->
-            <span class="photograph__tag">    <a href="#" class="photograph__tag__link">#Portrait</a>      </span>
-            <span class="photograph__tag">    <a href="#" class="photograph__tag__link">#Events</a>        </span>
-            <span class="photograph__tag">    <a href="#" class="photograph__tag__link">#Travel</a>        </span>
-            <span class="photograph__tag">    <a href="#" class="photograph__tag__link">#Animals</a>       </span>
+            <div class="tag" aria-label="photographer categories">
+                <a href="#" class="tag__link tag__link--smaller">#Portrait</a>
+                <a href="#" class="tag__link tag__link--smaller">#Events</a>  
+                <a href="#" class="tag__link tag__link--smaller">#Travel</a>  
+                <a href="#" class="tag__link tag__link--smaller">#Animals</a> 
+            </div>
+            
         </article>
     </main>
 

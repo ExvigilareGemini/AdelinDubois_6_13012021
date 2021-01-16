@@ -1,0 +1,22 @@
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+
+  &__imagelink {
+    position: relative;
+    width: 100%;
+    margin: map-get($map: $margin, $key: mobile-vertical) 0
+      map-get($map: $margin, $key: mobile-vertical)
+      map-get($map: $margin, $key: mobile-horizon);
+    &__link {
+      display: block;
+      position: absolute;
+      width: 40%;
+      height: 100%;
+    }
+    &__image {
+      width: 40%;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+.anchor {
+    position: absolute;
+    opacity: 0;
+}
+
+.main {
+    &__header{
+        position: absolute;
+        top: map-get($map: $margin, $key: mobile-vertical);
+        right: map-get($map: $margin, $key: mobile-horizon);
+    }
+}
