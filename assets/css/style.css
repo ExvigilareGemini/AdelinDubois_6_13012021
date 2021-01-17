@@ -43,16 +43,13 @@ p {
   margin-bottom: 5px;
 }
 .photograph__textparagraph {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   font-weight: bold;
 }
-.photograph__textparagraph__slogan {
+.photograph__textparagraph:nth-of-type(2) {
   color: #525252;
   font-size: 10px;
 }
-.photograph__textparagraph__price {
+.photograph__textparagraph:nth-of-type(3) {
   color: #9f9f9f;
   font-size: 10px;
 }
