@@ -64,5 +64,18 @@ function photographCreator(numberOfPhotograph) {
   }
 }
 
-
 photographCreator(4);
+
+function fetchData() {
+  fetch('./data.json')
+    .then(console.log('FETCH : OK'))
+    // .then((resp) => resp.json())
+    // .then((data) => test(data))
+    .catch(console.log('FETCH : ERROR'));
+}
+
+function test(data) {
+  console.log("test");
+}
+
+fetchData();
