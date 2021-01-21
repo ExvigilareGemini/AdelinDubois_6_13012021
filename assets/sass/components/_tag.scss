@@ -14,12 +14,16 @@
     border-radius: 25px;
     padding: 3px 8px;
     margin: 3px 3px;
+    z-index: 10;
     &--smaller {
       font-size: map-get($map: $font-size, $key: mobile-small);
     }
     &:hover {
       &::after {
         opacity: 1;
+      }
+      &.tag__link {
+        color: white;
       }
     }
     &::after {
@@ -33,7 +37,6 @@
       z-index: -10;
       border-radius: 25px;
       background-color: map-get($map: $colors, $key: primary);
-      color: white;
     }
   }
 }

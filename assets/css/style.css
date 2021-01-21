@@ -70,12 +70,16 @@ p {
   border-radius: 25px;
   padding: 3px 8px;
   margin: 3px 3px;
+  z-index: 10;
 }
 .tag__link--smaller {
   font-size: 10px;
 }
 .tag__link:hover::after {
   opacity: 1;
+}
+.tag__link:hover.tag__link {
+  color: white;
 }
 .tag__link::after {
   content: "";
@@ -88,7 +92,6 @@ p {
   z-index: -10;
   border-radius: 25px;
   background-color: #901C1C;
-  color: white;
 }
 
 .header {
