@@ -1,81 +1,57 @@
-const dataToCreateElement = [
-  // first level of child
-  ['div', 'photograph__cadre', 1, '.photograph'],
-  ['h2', 'photograph__name', 1, '.photograph'],
-  ['p', 'photograph__textparagraph', 3, '.photograph'],
-  ['div', 'tag', 1, '.photograph'],
-  // second level of child
-  ['a', 'photograph__link', 1, '.photograph__cadre'],
-  ['img', 'photograph__image', 1, '.photograph__cadre'],
-  ['a', 'tag__link tag__link--smaller', 4, '.tag'],
-];
+// Dynamic creation of HTML based on JSON datas. Sequence of execution : A04 -> A03 -> A02 -> A01
 
-// FUNCTIONS
-function articleCreator(idArticle) {
-  const articleCreated = document.createElement('article');
-  articleCreated.setAttribute('id', idArticle);
-  articleCreated.setAttribute('class', 'photograph');
-  return articleCreated;
+// A01
+// function using template string to generate HTML, creating the photograph part of the home page
+// the argument is an object coming from the json taht include photographers datas
+// object.data is used to insert photographers information in the created HTML
+// at line 24, looping creation of tags, permit to adapt the numbers of each by photographers
+function photographHTMLGenerator(objectPhotograph) {
+  return `
+  <article id="${objectPhotograph.id}" class="photograph">
+      <!-- IMAGE LINK -->
+      <div class="photograph__cadre">
+          <a href="#" class="photograph__link"></a>
+          <img src="./assets/src/Sample_Photos/Photographers_ID_Photos/${objectPhotograph.portrait}" alt="" class="photograph__image">
+      </div>
+      <!-- NAME -->
+      <h2 class="photograph__name">${objectPhotograph.name}</h2>
+      <!-- TEXT PARAGRAPH -->
+      <p class="photograph__textparagraph">${objectPhotograph.city}, ${objectPhotograph.country}</p>
+      <p class="photograph__textparagraph">${objectPhotograph.tagline}</p>
+      <p class="photograph__textparagraph">${objectPhotograph.price}/jour</p>
+      <!-- TAGS -->
+      <div class="tag" aria-label="photographer categories">
+      ${objectPhotograph.tags.map((tagPhotograph) => `
+      <a href="#" class="tag__link tag__link--smaller">#${tagPhotograph}</a>`).join('')
+}
+      </div>
+  </article>`;
 }
 
-function firstChildCreator(typeOfElement, classNameOfElement) {
-  const elementCreated = document.createElement(typeOfElement);
-  elementCreated.setAttribute('class', classNameOfElement);
-  return elementCreated;
+// A02
+// function that create all the block of HTML that is needed to be displayed
+// argument is an array, it comes from the JSON and contains photographers datas (see A03)
+// taking array of JSON, trasnform it in a new array by applying the A01 function to each (.map)
+function photographHTMLCompiler(arrayOfJson) {
+  return arrayOfJson.map(photographHTMLGenerator).join('');
 }
 
-function secondChildCreator(typeOfElement, classNameOfElement) {
-  const elementCreated = document.createElement(typeOfElement);
-  elementCreated.setAttribute('class', classNameOfElement);
-  return elementCreated;
+// A03
+// function applying A02 to the photographer's container
+// argument is the array coming from JSON passing to A02
+function photographCreator(data) {
+  document.querySelector('.photograph-container').innerHTML = photographHTMLCompiler(data.photographers);
 }
 
-function photographCreator(numberOfPhotograph) {
-  for (let p = 0; p < numberOfPhotograph; p++) {
-    // ___________________________________________________________________________________________
-    // ARTICLE CREATION
-    // selection du main
-    const main = document.querySelector('.main');
-    // creation article avec id et class
-    main.appendChild(articleCreator(p));
-
-    // ___________________________________________________________________________________________
-    // FIRST LEVEL OF CHILD
-    // je sélectionne mon article créé
-    const article = document.getElementById(p);
-    // création du premier niveau des enfants (ici div, h2, p, div)
-    for (let i = 0; i < 4; i++) {
-      for (let j = 0; j < dataToCreateElement[i][2]; j++) {
-        article.appendChild(firstChildCreator(dataToCreateElement[i][0], dataToCreateElement[i][1]));
-      }
-    }
-
-    // ___________________________________________________________________________________________
-    // SECOND LEVEL OF CHILD
-    for (let i = 0; i < 3; i++) {
-      for (let j = 0; j < dataToCreateElement[i + 4][2]; j++) {
-        // je sélectionne l'element avec la classe tag dans l'article avec id 0
-        const parentElement = article.querySelector(dataToCreateElement[i + 4][3]);
-        // creation des seconds enfants
-        parentElement.appendChild(secondChildCreator(dataToCreateElement[i + 4][0], dataToCreateElement[i + 4][1]));
-      }
-    }
-    // ___________________________________________________________________________________________
-  }
-}
-
-photographCreator(4);
-
-function fetchData() {
-  fetch('./data.json')
-    .then(console.log('FETCH : OK'))
-    // .then((resp) => resp.json())
-    // .then((data) => test(data))
+// A04
+// function that get datas in the /src/data.json and chain with .then
+// the respons is tranform into json, then the datas received are passed to A03 
+function fetchDataToCreatePhotographersHTML() {
+  fetch('./controller/src/data.json')
+    .then((resp) => resp.json())
+    .then((data) => photographCreator(data))
     .catch(console.log('FETCH : ERROR'));
 }
 
-function test(data) {
-  console.log("test");
-}
-
-fetchData();
+// calling A04 on loading page
+fetchDataToCreatePhotographersHTML();

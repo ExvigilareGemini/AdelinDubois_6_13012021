@@ -63,6 +63,7 @@ p {
   margin: 0;
 }
 .tag__link {
+  position: relative;
   text-decoration: none;
   font-weight: bold;
   border: solid 1px #ebebeb;
@@ -72,6 +73,22 @@ p {
 }
 .tag__link--smaller {
   font-size: 10px;
+}
+.tag__link:hover::after {
+  opacity: 1;
+}
+.tag__link::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  z-index: -10;
+  border-radius: 25px;
+  background-color: #901C1C;
+  color: white;
 }
 
 .header {

@@ -1,20 +1,39 @@
 .tag {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    flex-grow: 1;
-    width: 100%;
-    margin: 0;
-    &__link {
-      text-decoration: none;
-      font-weight: bold;
-      border: solid 1px lighten(map-get($map: $colors, $key: secondary-font-black), 60%);
-      border-radius: 25px;
-      padding: 3px 8px;
-      margin: 3px 3px;
-      &--smaller {  
-          font-size: map-get($map: $font-size, $key: mobile-small);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-grow: 1;
+  width: 100%;
+  margin: 0;
+  &__link {
+    position: relative;
+    text-decoration: none;
+    font-weight: bold;
+    border: solid 1px
+      lighten(map-get($map: $colors, $key: secondary-font-black), 60%);
+    border-radius: 25px;
+    padding: 3px 8px;
+    margin: 3px 3px;
+    &--smaller {
+      font-size: map-get($map: $font-size, $key: mobile-small);
+    }
+    &:hover {
+      &::after {
+        opacity: 1;
       }
     }
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      opacity: 0;
+      z-index: -10;
+      border-radius: 25px;
+      background-color: map-get($map: $colors, $key: primary);
+      color: white;
+    }
   }
-  
+}
