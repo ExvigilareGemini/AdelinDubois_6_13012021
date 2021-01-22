@@ -61,8 +61,10 @@ p {
   flex-grow: 1;
   width: 100%;
   margin: 0;
+  padding: 0;
 }
 .tag__link {
+  list-style-type: none;
   position: relative;
   text-decoration: none;
   font-weight: bold;
@@ -74,6 +76,10 @@ p {
 }
 .tag__link--smaller {
   font-size: 10px;
+}
+.tag__link[data-isChecked=true] {
+  background-color: #901C1C;
+  color: #FAFAFA;
 }
 .tag__link:hover::after {
   opacity: 1;

@@ -1,12 +1,26 @@
+const actualTagsChecked = [];
+
 // Dynamic creation of HTML based on JSON datas. Sequence of execution : A04 -> A03 -> A02 -> A01
+
+function isTagCorrespondToTagChecked(arrayToCheck) {
+  let TrueOrFalse = false;
+  actualTagsChecked.forEach((element1) => arrayToCheck.forEach((element2) => {
+    if (element1 === element2) {
+      TrueOrFalse = true;
+    }
+  }));
+  return TrueOrFalse;
+}
 
 // A01
 // function using template string to generate HTML, creating the photograph part of the home page
 // the argument is an object coming from the json taht include photographers datas
 // object.data is used to insert photographers information in the created HTML
-// at line 24, looping creation of tags, permit to adapt the numbers of each by photographers
+// before the <li... looping creation of tags, permit to adapt the numbers of each by photographers
 function photographHTMLGenerator(objectPhotograph) {
-  return `
+  if (actualTagsChecked.length === 0 || isTagCorrespondToTagChecked(objectPhotograph.tags)) {
+    console.log('3');
+    return `
   <article id="${objectPhotograph.id}" class="photograph">
       <!-- IMAGE LINK -->
       <div class="photograph__cadre">
@@ -18,14 +32,16 @@ function photographHTMLGenerator(objectPhotograph) {
       <!-- TEXT PARAGRAPH -->
       <p class="photograph__textparagraph">${objectPhotograph.city}, ${objectPhotograph.country}</p>
       <p class="photograph__textparagraph">${objectPhotograph.tagline}</p>
-      <p class="photograph__textparagraph">${objectPhotograph.price}/jour</p>
+      <p class="photograph__textparagraph">${objectPhotograph.price}€/jour</p>
       <!-- TAGS -->
-      <div class="tag" aria-label="photographer categories">
+      <ul class="tag" aria-label="photographer categories">
       ${objectPhotograph.tags.map((tagPhotograph) => `
-      <a href="#" class="tag__link tag__link--smaller">#${tagPhotograph}</a>`).join('')
+      <li onclick="sortingByTag('${tagPhotograph}')" data-isChecked="" data-tagName="${tagPhotograph}" class="tag__link tag__link--smaller">#${tagPhotograph}</li>`).join('')
 }
-      </div>
+      </ul>
   </article>`;
+  }
+  return '';
 }
 
 // A02
@@ -45,13 +61,36 @@ function photographCreator(data) {
 
 // A04
 // function that get datas in the /src/data.json and chain with .then
-// the respons is tranform into json, then the datas received are passed to A03 
+// the respons is tranform into json, then the datas received are passed to A03
 function fetchDataToCreatePhotographersHTML() {
   fetch('./controller/src/data.json')
     .then((resp) => resp.json())
+    .then(console.log('2'))
     .then((data) => photographCreator(data))
-    .catch(console.log('FETCH : ERROR'));
+    .then(console.log('4'))
+    .catch((error) => console.log(`Erreur : ${error}`));
 }
 
 // calling A04 on loading page
 fetchDataToCreatePhotographersHTML();
+
+async function sortingByTag(tagName) {
+  const tagDOM = document.querySelector(`[data-tagName="${tagName}"]`);
+
+  if (tagDOM.getAttribute('data-isChecked') === 'true') {
+    const pos = actualTagsChecked.indexOf(tagName);
+    actualTagsChecked.splice(pos, 1);
+    fetchDataToCreatePhotographersHTML();
+    const tagDOMS = document.querySelectorAll(`[data-tagName="${tagName}"]`);
+    tagDOMS.forEach((element) => element.setAttribute('data-isChecked', 'false'));
+    // tagDOM.setAttribute('data-isChecked', 'false');
+  } else {
+    actualTagsChecked.push(tagName);
+    (console.log('1'));
+    fetchDataToCreatePhotographersHTML();
+    (console.log('5'));
+    const tagDOMS = document.querySelectorAll(`[data-tagName="${tagName}"]`);
+    (console.log('6'));
+    tagDOMS.forEach((element) => element.setAttribute('data-isChecked', 'true'));
+  }
+}

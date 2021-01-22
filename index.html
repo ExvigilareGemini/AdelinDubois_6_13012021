@@ -21,27 +21,31 @@
             <img src="./assets/src/FishEye_Logo.png" alt="Fisheye home page" class="header__imagelink__image">
         </div>
         <!-- TAGS -->
-        <div class="tag" aria-label="photographer categories">
-           <a href="#" class="tag__link">#Portrait</a>      
-           <a href="#" class="tag__link">#Art</a>           
-           <a href="#" class="tag__link">#Fashion</a>       
-           <a href="#" class="tag__link">#Architecture</a>  
-           <a href="#" class="tag__link">#Travel</a>        
-           <a href="#" class="tag__link">#Sport</a>         
-           <a href="#" class="tag__link">#Animals</a>       
-           <a href="#" class="tag__link">#Events</a>        
-        </div>
+        <ul class="tag" aria-label="photographer categories">
+           <li onclick="sortingByTag('portrait')" data-isChecked="false" data-tagName="portrait" class="tag__link">#Portrait</li>      
+           <li onclick="sortingByTag('art')" data-isChecked="false" data-tagName="art" class="tag__link">#Art</li>           
+           <li onclick="sortingByTag('fashion')" data-isChecked="false" data-tagName="fashion" class="tag__link">#Fashion</li>       
+           <li onclick="sortingByTag('architecture')" data-isChecked="false" data-tagName="architecture" class="tag__link">#Architecture</li>  
+           <li onclick="sortingByTag('travel')" data-isChecked="false" data-tagName="travel" class="tag__link">#Travel</li>        
+           <li onclick="sortingByTag('sports')" data-isChecked="false" data-tagName="sports" class="tag__link">#Sport</li>         
+           <li onclick="sortingByTag('animals')" data-isChecked="false" data-tagName="animals" class="tag__link">#Animals</li>       
+           <li onclick="sortingByTag('events')" data-isChecked="false" data-tagName="events" class="tag__link">#Events</li>        
+        </ul>
     </header>
 
     <!-- MAIN -->
     <main class="main" id="main">
+
+        <button class="btn-test" onclick="consoleTest('test2')">Test</button>
         <!-- HEADER -->
         <header class="main__header">
             <h1>Nos photographes</h1>
         </header>
         <!-- MINIATURES PHOTOGRAPHS -->
     <div class="photograph-container"></div>
-    
+
+
+
     </main>
 
     <!-- JS -->

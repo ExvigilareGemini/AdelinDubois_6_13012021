@@ -5,18 +5,23 @@
   flex-grow: 1;
   width: 100%;
   margin: 0;
+  padding: 0;
   &__link {
+    list-style-type: none;
     position: relative;
     text-decoration: none;
     font-weight: bold;
-    border: solid 1px
-      lighten(map-get($map: $colors, $key: secondary-font-black), 60%);
+    border: solid 1px lighten(map-get($map: $colors, $key: secondary-font-black), 60%);
     border-radius: 25px;
     padding: 3px 8px;
     margin: 3px 3px;
     z-index: 10;
     &--smaller {
       font-size: map-get($map: $font-size, $key: mobile-small);
+    }
+    &[data-isChecked="true"] {
+      background-color: map-get($map: $colors, $key: primary);
+      color: map-get($map: $colors, $key: secondary-white);
     }
     &:hover {
       &::after {
