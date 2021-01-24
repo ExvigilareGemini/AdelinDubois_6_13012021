@@ -16,6 +16,7 @@
     padding: 3px 8px;
     margin: 3px 3px;
     z-index: 10;
+    pointer: cursor;
     &--smaller {
       font-size: map-get($map: $font-size, $key: mobile-small);
     }
