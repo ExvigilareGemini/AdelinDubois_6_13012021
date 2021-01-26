@@ -122,8 +122,19 @@ p {
 }
 
 .anchor {
-  position: absolute;
+  position: fixed;
   opacity: 0;
+  width: 130px;
+  left: 50%;
+  margin: 5px 0 0 -75px;
+  padding: 3px 10px;
+  text-align: center;
+  background-color: #D3573C;
+  color: black;
+  font-weight: 1000;
+  text-decoration: none;
+  border-radius: 5px;
+  z-index: 100;
 }
 
 .main__header {

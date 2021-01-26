@@ -1,5 +1,13 @@
 const actualTagsChecked = [];
 
+window.onscroll = function () {
+  if (window.pageYOffset === 0) {
+    document.querySelector('.anchor').style.opacity = '0';
+  } else {
+    document.querySelector('.anchor').style.opacity = '1';
+  }
+};
+
 // _________________________________________________________________________________________________
 // DYNAMIC CREATION OF HTML BASED ON JSON DATAS. SEQUENCE OF EXECUTION : F04 -> F03 -> F02 -> F01
 
@@ -13,7 +21,7 @@ function photographHTMLGenerator(objectPhotograph) {
   <article id="${objectPhotograph.id}" class="photograph">
       <!-- IMAGE LINK -->
       <div class="photograph__cadre">
-          <a href="#" class="photograph__link"></a>
+          <a href="./vue/photographer.html?id=${objectPhotograph.id}" class="photograph__link"></a>
           <img src="./assets/src/Sample_Photos/Photographers_ID_Photos/${objectPhotograph.portrait}" alt="" class="photograph__image">
       </div>
       <!-- NAME -->
@@ -57,7 +65,6 @@ function fetchDataToCreatePhotographersHTML() {
 }
 
 // calling F04 on loading page
-fetchDataToCreatePhotographersHTML();
 
 // _________________________________________________________________________________________________
 // DYNAMIC MODIFICATION WITH TAGS CLICK IN HTML -> CALL F08 | F05-6-7 IS USED FOR F08
