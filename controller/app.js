@@ -64,8 +64,6 @@ function fetchDataToCreatePhotographersHTML() {
     .catch((error) => console.log(`Erreur : ${error}`));
 }
 
-// calling F04 on loading page
-
 // _________________________________________________________________________________________________
 // DYNAMIC MODIFICATION WITH TAGS CLICK IN HTML -> CALL F08 | F05-6-7 IS USED FOR F08
 
