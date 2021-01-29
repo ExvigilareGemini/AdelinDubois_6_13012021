@@ -1,0 +1,36 @@
+.description-photographer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 map-get($map: $margin, $key: mobile-horizon);
+  &__text {
+    flex-grow: 1;
+    font-weight: bold;
+    &__title {
+      font-size: map-get($map: $font-size, $key: mobile-big);
+      color: map-get($map: $colors, $key: secondary);
+      margin-bottom: 0;
+    }
+    &__localisation {
+      font-size: map-get($map: $font-size, $key: mobile-medium);
+      color: map-get($map: $colors, $key: secondary-font-red);
+    }
+    &__slogan {
+      font-size: map-get($map: $font-size, $key: mobile-small);
+      color: map-get($map: $colors, $key: secondary-font-black);
+    }
+  }
+
+  &__cadre {
+    position: relative;
+    width: 12vh;
+    height: 12vh;
+    border-radius: 100%;
+    overflow: hidden;
+  }
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
