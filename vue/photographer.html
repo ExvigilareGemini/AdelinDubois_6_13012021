@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/d9919cf935.js" crossorigin="anonymous"></script>
 </head>
 <body class="body">
 
@@ -32,25 +33,28 @@
         </div>
 
         <!-- MEDIA OF PHOTOGRAPHER -->
-        <div class="media-photographer-container">
-            <article class="media-photograph">
-                <div class="media-photograph__cadre">
-                    <img src="../assets/src/Sample_Photos/Ellie Rose/Architecture_Connected_Curves.jpg" alt="" class="media-photograph__image">
-                </div>
-                <p class="media-photograph__description">Description</p>
-                <p class="media-photograph__priceAndLike">70€ 12</p>
-                <img src="../assets/src/heart-solid.svg" alt="" class="media-photograph__icon">
-            </article>
-        </div>
+        <div class="media-photographer-container"></div>
 
         <!-- INFORMATION ABOUT LIKES AND PRICE -->
         <div class="showing-box">
             <p class="showing-box__numberOfLike"></p>
             <img src="" alt="" class="showing-box__icon">
             <p class="showing-box__price"></p>
+        </div>    
+
+        <!-- LIGHTBOX -->
+        <div class="lightbox">
+            <i class="fas fa-times lightbox__cross" onclick="closeLightbox()"></i>
+            <div class="lightbox__cadre">
+                <img src="" alt="" class="lightbox__image">
+            </div>
+            <p class="lightbox__description"></p>
+            <a class="fas fa-chevron-left lightbox__previous"></a>
+            <a class="fas fa-chevron-right lightbox__next"></a>
         </div>
     </main>
     
+
 
     <!-- JS -->
     <script src="../controller/photographer.js"></script>

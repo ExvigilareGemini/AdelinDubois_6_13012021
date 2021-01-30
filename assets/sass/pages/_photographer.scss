@@ -36,3 +36,11 @@
     object-fit: cover;
   }
 }
+.showing-box {
+  display: none;
+}
+.sorting-media {
+  &__select {
+    display: none;
+  }
+}

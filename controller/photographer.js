@@ -1,6 +1,7 @@
 let actualPhotographerId = 0;
 let ActualPhotographerName = '';
-
+// _________________________________________________________________________________________________
+// _________________________________________________________________________________________________
 // _________________________________________________________________________________________________
 // DYNAMIC CREATION OF THE PAGE. POPULATE PHOTOGRAPHER & CREATA HTML FOR MEDIAS
 //  SEQUENCE OF EXECUTION :
@@ -28,18 +29,61 @@ function createHtmlDescriptionPhotographer(photographer) {
         <button class="button">Contactez-moi</button>
         `;
 }
+
+// class Photo {
+//   constructor() {
+//     this.type = 'photo';
+//     this.create = function (mediaImage) {
+//       return `<img src="../assets/src/Sample_Photos/${ActualPhotographerName}/${mediaImage}" alt="" class="media-photograph__media">`;
+//     };
+//   }
+// }
+
+// class Video {
+//   constructor() {
+//     this.type = 'video';
+//     this.create = function (mediaImage) {
+//       return `<video src="../assets/src/Sample_Photos/${ActualPhotographerName}/${mediaImage}" alt="" class="media-photograph__media" controls></video>`;
+//     };
+//   }
+// }
+
+// class MediaFactory {
+//   constructor() {
+//     this.createMediaHTML = function (type) {
+//       let media;
+//       if (type === 'jpg') {
+//         media = new Photo();
+//       } else if (type === 'mp4') {
+//         media = new Video();
+//       }
+//       return media;
+//     };
+//   }
+// }
+
+function isImageOrVideo(mediaToTest) {
+  if ('image' in mediaToTest) {
+    return `<img src="../assets/src/Sample_Photos/${ActualPhotographerName}/${mediaToTest.image}" alt="" class="media-photograph__media">`;
+  }
+  return `<video src="../assets/src/Sample_Photos/${ActualPhotographerName}/${mediaToTest.video}" alt="" class="media-photograph__media" controls></video>`;
+}
+
+// Pour pouvoir utiliser le factory il faudrait vérifier que le nom dans le JSON est soit image ou video
+
 // F06
 function createHtmlMediaPhotograph(media) {
   // eslint-disable-next-line eqeqeq
   if (media.photographerId == actualPhotographerId) {
     return `
-  <article class="media-photograph">
+  <article class="media-photograph" id="${media.id}">
     <div class="media-photograph__cadre">
-        <img src="../assets/src/Sample_Photos/${ActualPhotographerName}/${media.image}" alt="" class="media-photograph__image">
+        ${isImageOrVideo(media)}
     </div>
     <p class="media-photograph__description">${media.description}</p>
-    <p class="media-photograph__priceAndLike">${media.price}€ ${media.likes}</p>
-    <img src="../assets/src/heart-solid.svg" alt="" class="media-photograph__icon">
+    <p class="media-photograph__price">${media.price}€</p>
+    <p class="media-photograph__likes">${media.likes}</p>
+    <i class="fas fa-heart media-photograph__icon" aria-label="likes" onclick="incrementLikes(${media.id})"></i>
   </article>
         `;
   }
@@ -74,3 +118,24 @@ function fetchDataToCreatePhotographersHTML() {
     .catch((error) => console.log(`Erreur : ${error}`));
 }
 fetchDataToCreatePhotographersHTML();
+
+// _________________________________________________________________________________________________
+// _________________________________________________________________________________________________
+// _________________________________________________________________________________________________
+// when click on heart icon of .media-photograph, increase number of likes displayed in
+// <p> .media-photograph__likes
+// argument: is the id of the media created in F06
+// firstly, select .media-photograph with corrsponding id, then select <p> .media-photograph__likes
+// inside this one, transform text in Int then add 1, then write it with .textContent
+function incrementLikes(idOfMedia) {
+  const mediaPhotographLiked = document.getElementById(idOfMedia);
+  const likesDisplayed = mediaPhotographLiked.querySelector('.media-photograph__likes');
+  likesDisplayed.textContent = parseInt(likesDisplayed.textContent, 10) + 1;
+}
+
+// _________________________________________________________________________________________________
+// _________________________________________________________________________________________________
+// _________________________________________________________________________________________________
+function closeLightbox() {
+  document.querySelector('.lightbox').style.display = 'none';
+}
