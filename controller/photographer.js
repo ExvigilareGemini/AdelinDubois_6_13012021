@@ -64,7 +64,7 @@ function createHtmlDescriptionPhotographer(photographer) {
 
 function isImageOrVideo(mediaToTest) {
   if ('image' in mediaToTest) {
-    return `<img src="../assets/src/Sample_Photos/${ActualPhotographerName}/${mediaToTest.image}" alt="" class="media-photograph__media">`;
+    return `<img src="../assets/src/Sample_Photos/${ActualPhotographerName}/${mediaToTest.image}" alt="" class="media-photograph__media" onclick="openLightbox()">`;
   }
   return `<video src="../assets/src/Sample_Photos/${ActualPhotographerName}/${mediaToTest.video}" alt="" class="media-photograph__media" controls></video>`;
 }
@@ -138,4 +138,7 @@ function incrementLikes(idOfMedia) {
 // _________________________________________________________________________________________________
 function closeLightbox() {
   document.querySelector('.lightbox').style.display = 'none';
+}
+function openLightbox() {
+  document.querySelector('.lightbox').style.display = 'grid';
 }
