@@ -12,4 +12,5 @@
   font-size: map-get($map: $font-size, $key: mobile-medium);
   font-weight: bold;
   vertical-align: center;
+  z-index: 100;
 }

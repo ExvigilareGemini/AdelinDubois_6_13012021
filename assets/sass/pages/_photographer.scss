@@ -6,9 +6,11 @@
   &__text {
     flex-grow: 1;
     font-weight: bold;
+    width: 60%;
     &__title {
       font-size: map-get($map: $font-size, $key: mobile-big);
       color: map-get($map: $colors, $key: secondary);
+      margin-top: 15px;
       margin-bottom: 0;
     }
     &__localisation {

@@ -68,6 +68,7 @@
         "image": "Fashion_Yellow_Beach.jpg",
         "tags": ["fashion"],
         "likes": 62,
+        "description": "Description",
         "date": "2011-12-08",
         "price": 55
       },
@@ -77,6 +78,7 @@
         "image": "Fashion_Urban_Jungle.jpg",
         "tags": ["fashion"],
         "likes": 11,
+        "description": "Description",
         "date": "2011-11-06",
         "price": 55
       },
@@ -86,6 +88,7 @@
         "image": "Fashion_Pattern_on_Pattern.jpg",
         "tags": ["fashion"],
         "likes": 72,
+        "description": "Description",
         "date": "2013-08-12",
         "price": 55
       },
@@ -95,6 +98,7 @@
         "image": "Event-_eddingGazebo.jpg",
         "tags": ["events"],
         "likes": 69,
+        "description": "Description",
         "date": "2018-02-22",
         "price": 55
       },
@@ -104,6 +108,7 @@
         "image": "Event_Sparklers.jpg",
         "tags": ["events"],
         "likes": 2,
+        "description": "Description",
         "date": "2020-05-25",
         "price": 55
       },
@@ -113,6 +118,7 @@
         "image": "Event_18thAnniversary.jpg",
         "tags": ["events"],
         "likes": 33,
+        "description": "Description",
         "date": "2019-06-12",
         "price": 55
       },
@@ -122,6 +128,7 @@
         "video": "Art_Wooden_Horse_Sculpture.mp4",
         "tags": ["art"],
         "likes": 24,
+        "description": "Description",
         "date": "2011-12-08",
         "price": 100
       },
@@ -131,6 +138,7 @@
         "image": "Art_Triangle_Man.jpg",
         "tags": ["art"],
         "likes": 88,
+        "description": "Description",
         "date": "2007-05-07",
         "price": 55
       },
@@ -140,6 +148,7 @@
         "image": "Art_Purple_light.jpg",
         "tags": ["art"],
         "likes": 24,
+        "description": "Description",
         "date": "2018-05-05",
         "price": 55
       },
@@ -149,6 +158,7 @@
         "image": "Art_Mine.jpg",
         "tags": ["art"],
         "likes": 75,
+        "description": "Description",
         "date": "2019-11-25",
         "price": 55
       },
@@ -159,6 +169,7 @@
         "image": "Sport_2000_with_8.jpg",
         "tags": ["sport"],
         "likes": 52,
+        "description": "Description",
         "date": "2013-02-30",
         "price": 70
       },
@@ -168,6 +179,7 @@
         "image": "Fashion_Wings.jpg",
         "tags": ["fashion"],
         "likes": 58,
+        "description": "Description",
         "date": "2018-07-17",
         "price": 70
       },
@@ -177,6 +189,7 @@
         "image": "Fashion_Melody_Red_on_Stripes.jpg",
         "tags": ["fashion"],
         "likes": 11,
+        "description": "Description",
         "date": "2019-08-12",
         "price": 70
       },
@@ -186,6 +199,7 @@
         "image": "Event_VentureConference.jpg",
         "tags": ["events"],
         "likes": 2,
+        "description": "Description",
         "date": "2019-01-02",
         "price": 70
       },
@@ -195,6 +209,7 @@
         "image": "Event_ProductPitchjpg",
         "tags": ["events"],
         "likes": 3,
+        "description": "Description",
         "date": "2019-05-20",
         "price": 70
       },
@@ -204,6 +219,7 @@
         "image": "Event_KeyboardCheck.jpg",
         "tags": ["events"],
         "likes": 52,
+        "description": "Description",
         "date": "2019-07-18",
         "price": 70
       },
@@ -213,6 +229,7 @@
         "image": "Event_Emcee.jpg",
         "tags": ["events"],
         "likes": 23,
+        "description": "Description",
         "date": "2018-02-22",
         "price": 70
       },
@@ -222,6 +239,7 @@
         "image": "Animals_Majesty.jpg",
         "tags": ["animals"],
         "likes": 52,
+        "description": "Description",
         "date": "2017-03-13",
         "price": 70
       },
@@ -231,6 +249,7 @@
         "video": "Animals_Puppiness.mp4",
         "tags": ["animals"],
         "likes": 52,
+        "description": "Description",
         "date": "2016-06-12",
         "price": 70
       },
@@ -241,6 +260,7 @@
         "video": "Travel_Rock_Mountains.mp4",
         "tags": ["travel"],
         "likes": 23,
+        "description": "Description",
         "date": "2017-03-18",
         "price": 45
       },
@@ -250,6 +270,7 @@
         "image": "Travel_Outdoor_Baths.jpg",
         "tags": ["travel"],
         "likes": 101,
+        "description": "Description",
         "date": "2017-04-03",
         "price": 45
       },
@@ -259,6 +280,7 @@
         "image": "Travel_Road_into_Hill.jpg",
         "tags": ["travel"],
         "likes": 99,
+        "description": "Description",
         "date": "2018-04-30",
         "price": 45
       },
@@ -268,6 +290,7 @@
         "image": "Travel_Bridge_into_Forest.jpg",
         "tags": ["travel"],
         "likes": 34,
+        "description": "Description",
         "date": "2016-04-05",
         "price": 45
       },
@@ -277,6 +300,7 @@
         "image": "Travel_Boat_Wanderer.jpg",
         "tags": ["travel"],
         "likes": 23,
+        "description": "Description",
         "date": "2017-03-18",
         "price": 45
       },
@@ -286,6 +310,7 @@
         "image": "Portrait_Sunkissed.jpg",
         "tags": ["portrait"],
         "likes": 66,
+        "description": "Description",
         "date": "2018-05-24",
         "price": 45
       },
@@ -295,6 +320,7 @@
         "image": "Portrait_Shaw.jpg",
         "tags": ["portait"],
         "likes": 52,
+        "description": "Description",
         "date": "2017-04-21",
         "price": 45
       },
@@ -304,6 +330,7 @@
         "image": "Portrait_Alexandra.jpg",
         "tags": ["portait"],
         "likes": 95,
+        "description": "Description",
         "date": "2018-11-02",
         "price": 45
       },
@@ -313,6 +340,7 @@
         "image": "Portrait_AfternoonBreak.jpg",
         "tags": ["portait"],
         "likes": 25,
+        "description": "Description",
         "date": "2019-01-02",
         "price": 45
       },
@@ -323,6 +351,7 @@
         "image": "Travel_Lonesome.jpg",
         "tags": ["travel"],
         "likes": 88,
+        "description": "Description",
         "date": "2019-02-03",
         "price": 45
       },
@@ -332,6 +361,7 @@
         "image": "Travel_HillsideColor.jpg",
         "tags": ["travel"],
         "likes": 85,
+        "description": "Description",
         "date": "2019-04-03",
         "price": 45
       },
@@ -341,6 +371,7 @@
         "image": "Portrait_Wednesday.jpg",
         "tags": ["portait"],
         "likes": 34,
+        "description": "Description",
         "date": "2019-04-07",
         "price": 45
       },
@@ -350,6 +381,7 @@
         "image": "Portrait_Nora.jpg",
         "tags": ["portait"],
         "likes": 63,
+        "description": "Description",
         "date": "2019-04-07",
         "price": 45
       },
@@ -359,6 +391,7 @@
         "image": "Portrait_Background.jpg",
         "tags": ["portait"],
         "likes": 55,
+        "description": "Description",
         "date": "2019-06-20",
         "price": 45
       },
@@ -368,6 +401,7 @@
         "image": "Event_SeasideWedding.jpg",
         "tags": ["events"],
         "likes": 25,
+        "description": "Description",
         "date": "2019-06-21",
         "price": 45
       },
@@ -377,6 +411,7 @@
         "image": "Event_PintoWedding.jpg",
         "tags": ["events"],
         "likes": 52,
+        "description": "Description",
         "date": "2019-06-25",
         "price": 45
       },
@@ -386,6 +421,7 @@
         "image": "Event_BenevidesWedding.jpg",
         "tags": ["events"],
         "likes": 77,
+        "description": "Description",
         "date": "2019-06-28",
         "price": 45
       },
@@ -395,15 +431,17 @@
         "video": "Animals_Wild_Horses_in_the_mountains.mp4",
         "tags": ["animals"],
         "likes": 142,
+        "description": "Description",
         "date": "2019-08-23",
         "price": 60
       },
       {
         "id": 95234343,
         "photographerId": 243,
-        "image": "Animals_Rainbow.jpg.jpg",
+        "image": "Animals_Rainbow.jpg",
         "tags": ["animals"],
         "likes": 59,
+        "description": "Description",
         "date": "2019-07-02",
         "price": 60
       },
@@ -414,6 +452,7 @@
         "image": "Travel_Tower.jpg",
         "tags": ["travel"],
         "likes": 25,
+        "description": "Description",
         "date": "2019-04-03",
         "price": 60
       },
@@ -423,6 +462,7 @@
         "image": "Travel_SunsetonCanals.jpg",
         "tags": ["travel"],
         "likes": 53,
+        "description": "Description",
         "date": "2019-05-06",
         "price": 60
       },
@@ -432,6 +472,7 @@
         "image": "Travel_OpenMountain.jpg",
         "tags": ["travel"],
         "likes": 33,
+        "description": "Description",
         "date": "2019-05-12",
         "price": 60
       },
@@ -441,6 +482,7 @@
         "image": "Travel_Bike_and_Stair.jpg",
         "tags": ["travel"],
         "likes": 53,
+        "description": "Description",
         "date": "2019-06-20",
         "price": 60
       },
@@ -450,6 +492,7 @@
         "image": "Travel_Adventure_Door.jpg",
         "tags": ["travel"],
         "likes": 63,
+        "description": "Description",
         "date": "2019-06-26",
         "price": 60
       },
@@ -459,6 +502,7 @@
         "image": "Architecture_Contrast.jpg",
         "tags": ["architecture"],
         "likes": 52,
+        "description": "Description",
         "date": "2019-06-30",
         "price": 60
       },
@@ -468,6 +512,7 @@
         "image": "Architecture_On_a_hill.jpg",
         "tags": ["architecture"],
         "likes": 63,
+        "description": "Description",
         "date": "2019-07-20",
         "price": 60
       },
@@ -477,6 +522,7 @@
         "image": "Architecture_Dome.jpg",
         "tags": ["architecture"],
         "likes": 88,
+        "description": "Description",
         "date": "2020-01-05",
         "price": 60
       },
@@ -486,6 +532,7 @@
         "video": "Architecture_coverr_circle_empty_highway_in_buenos_aires_587740985637.mp4",
         "tags": ["architecture"],
         "likes": 57,
+        "description": "Description",
         "date": "2020-01-20",
         "price": 65
       },
@@ -495,6 +542,7 @@
         "image": "Architecture_Corner_Room.jpg",
         "tags": ["architecture"],
         "likes": 54,
+        "description": "Description",
         "date": "2020-05-05",
         "price": 60
       },
@@ -505,6 +553,7 @@
         "video": "Sport_Tricks_in_the_air.mp4",
         "tags": ["sport"],
         "likes": 150,
+        "description": "Description",
         "date": "2018-02-30",
         "price": 70
       },
@@ -514,6 +563,7 @@
         "image": "Sport_Next_Hold.jpg",
         "tags": ["sport"],
         "likes": 101,
+        "description": "Description",
         "date": "2018-03-05",
         "price": 65
       },
@@ -523,6 +573,7 @@
         "image": "sport_water_tunnel.jpg",
         "tags": ["sport"],
         "likes": 103,
+        "description": "Description",
         "date": "2018-03-10",
         "price": 70
       },
@@ -532,6 +583,7 @@
         "image": "Sport_Sky_Cross.jpg",
         "tags": ["sport"],
         "likes": 77,
+        "description": "Description",
         "date": "2018-04-16",
         "price": 50
       },
@@ -541,6 +593,7 @@
         "image": "Sport_Race_End.jpg",
         "tags": ["sport"],
         "likes": 88,
+        "description": "Description",
         "date": "2018-04-22",
         "price": 65
       },
@@ -550,6 +603,7 @@
         "image": "Sport_Jump.jpg",
         "tags": ["sport"],
         "likes": 95,
+        "description": "Description",
         "date": "2018-04-27",
         "price": 70
       },
@@ -559,6 +613,7 @@
         "image": "Architecture_White_Light.jpg",
         "tags": ["architecture"],
         "likes": 52,
+        "description": "Description",
         "date": "2018-05-03",
         "price": 75
       },
@@ -568,6 +623,7 @@
         "image": "Architecture_Water_on_Modern.jpg",
         "tags": ["architecture"],
         "likes": 55,
+        "description": "Description",
         "date": "2018-05-10",
         "price": 72
       },
@@ -577,6 +633,7 @@
         "image": "Architecture_Horseshoe.jpg",
         "tags": ["architecture"],
         "likes": 85,
+        "description": "Description",
         "date": "2018-05-15",
         "price": 71
       },
@@ -586,6 +643,7 @@
         "image": "Architecture_Cross_Bar.jpg",
         "tags": ["architecture"],
         "likes": 66,
+        "description": "Description",
         "date": "2018-05-20",
         "price": 58
       },
@@ -595,6 +653,7 @@
         "image": "Architecture_Connected_Curves.jpg",
         "tags": ["architecture"],
         "likes": 79,
+        "description": "Description",
         "date": "2018-05-21",
         "price": 80
       }
