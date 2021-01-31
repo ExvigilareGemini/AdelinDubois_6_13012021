@@ -27,7 +27,7 @@ function createHtmlDescriptionPhotographer(photographer) {
         <li onclick="sortingByTag('${tagPhotograph}')" data-isChecked="" data-tagName="${tagPhotograph}" class="tag__link tag__link--smaller">#${tagPhotograph}</li>`).join('')
 }
         </ul>
-        <button class="description-photographer__button button">Contactez-moi</button>
+        <button class="description-photographer__button button" onclick="openModal()">Contactez-moi</button>
         `;
 }
 
@@ -208,3 +208,13 @@ function otherImage(mouvement) {
 // _________________________________________________________________________________________________
 // _________________________________________________________________________________________________
 // _________________________________________________________________________________________________
+
+// F17
+function openModal() {
+  document.querySelector('.contact-modal').style.display = 'flex';
+}
+
+// F18
+function closeModal() {
+  document.querySelector('.contact-modal').style.display = 'none';
+}

@@ -6,4 +6,5 @@
   border-radius: 4px;
   font-size: map-get($map: $font-size, $key: mobile-medium);
   font-weight: bold;
+  cursor: pointer;
 }

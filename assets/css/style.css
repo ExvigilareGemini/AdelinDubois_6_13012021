@@ -106,6 +106,7 @@ p {
   border-radius: 4px;
   font-size: 17px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .media-photograph {
@@ -135,7 +136,7 @@ p {
 
 .contact-modal {
   position: fixed;
-  display: flex;
+  display: none;
   flex-wrap: wrap;
   align-content: flex-start;
   z-index: 200;
@@ -147,16 +148,18 @@ p {
   background-color: #db8876;
 }
 .contact-modal__title {
-  max-width: 80vw;
+  flex-grow: 1;
+  max-width: 75vw;
   margin: 2vh 0 0 5vw;
   font-size: 33px;
   color: black;
 }
 .contact-modal__cross {
   color: white;
-  margin: 2vh 0 0 5vw;
+  padding: 2vh;
   font-size: 30px;
   justify-self: right;
+  cursor: pointer;
 }
 .contact-modal__label {
   width: 90vw;

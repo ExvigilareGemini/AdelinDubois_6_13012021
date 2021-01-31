@@ -1,6 +1,6 @@
 .contact-modal {
     position: fixed;
-    display: flex;
+    display: none;
     flex-wrap: wrap;
     align-content: flex-start;
     z-index: 200;
@@ -11,16 +11,18 @@
     left: 0;
     background-color: map-get($map: $colors, $key: background-modal);
     &__title {
-        max-width: 80vw;
+        flex-grow: 1;
+        max-width: 75vw;
         margin: 2vh 0 0 5vw;
         font-size: map-get($map: $font-size, $key: mobile-extra);
         color: black;
     }
     &__cross {
         color: white;
-        margin: 2vh 0 0 5vw;
+        padding: 2vh;
         font-size: map-get($map: $font-size, $key: mobile-big);
         justify-self: right;
+        cursor: pointer;
     }
     &__label {
         width: 90vw;
