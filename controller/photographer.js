@@ -1,5 +1,6 @@
 let actualPhotographerId = 0;
 let ActualPhotographerName = '';
+const actualMediaId = [];
 // _________________________________________________________________________________________________
 // _________________________________________________________________________________________________
 // _________________________________________________________________________________________________
@@ -62,6 +63,7 @@ function createHtmlDescriptionPhotographer(photographer) {
 //   }
 // }
 
+// F06
 function imageOrVideoTagCreator(mediaToTest) {
   if ('image' in mediaToTest) {
     return `<img src="../assets/src/Sample_Photos/${ActualPhotographerName}/${mediaToTest.image}" alt="" class="media-photograph__media" onclick="openLightbox();displaySelectedImage(${mediaToTest.id})">`;
@@ -69,9 +71,11 @@ function imageOrVideoTagCreator(mediaToTest) {
   return `<video src="../assets/src/Sample_Photos/${ActualPhotographerName}/${mediaToTest.video}" alt="" class="media-photograph__media" onclick="openLightbox();displaySelectedImage(${mediaToTest.id})"></video>`;
 }
 
-// Pour pouvoir utiliser le factory il faudrait vérifier que le nom dans le JSON est soit image ou video
-
-// F06
+// F07
+// function creating HTML code for one media-photograph
+// argument: is an object from JSON containing dats about one media
+// firstly testing if media os from actual photographer by checking id, if not ->  return ''
+// then create HTML code with template strings using media datas
 function createHtmlMediaPhotograph(media) {
   // eslint-disable-next-line eqeqeq
   if (media.photographerId == actualPhotographerId) {
@@ -91,12 +95,12 @@ function createHtmlMediaPhotograph(media) {
   return '';
 }
 
-// F07
+// F08
 function mediaPhotographHtmlCompiler(mediaJSON) {
   return mediaJSON.map(createHtmlMediaPhotograph).join('');
 }
 
-// F08
+// F09
 // function get id from url then call functions to write html
 function photographerPageCreator(data) {
   const url = new URL(document.location.href);
@@ -106,9 +110,12 @@ function photographerPageCreator(data) {
   ActualPhotographerName = actualPhotographerDatas.name;
   document.querySelector('.description-photographer').insertAdjacentHTML('afterbegin', createHtmlDescriptionPhotographer(actualPhotographerDatas));
   document.querySelector('.media-photographer-container').insertAdjacentHTML('afterbegin', mediaPhotographHtmlCompiler(data.media));
+  // put id of each media in actualMediaId[] for F16
+  const allId = document.querySelectorAll('.media-photograph');
+  allId.forEach((el) => actualMediaId.push(el.getAttribute('id')));
 }
 
-// F09
+// F10
 // function that get datas in the /src/data.json and chain with .then
 // the respons is tranform into json, then the datas received are passed to F07
 function fetchDataToCreatePhotographersHTML() {
@@ -123,6 +130,8 @@ fetchDataToCreatePhotographersHTML();
 // _________________________________________________________________________________________________
 // _________________________________________________________________________________________________
 // _________________________________________________________________________________________________
+
+// F11
 // when click on heart icon of .media-photograph, increase number of likes displayed in
 // <p> .media-photograph__likes
 // argument: is the id of the media created in F06
@@ -137,9 +146,15 @@ function incrementLikes(idOfMedia) {
 // _________________________________________________________________________________________________
 // _________________________________________________________________________________________________
 // _________________________________________________________________________________________________
+
+// F12
+// function that close the lightbox
 function closeLightbox() {
   document.querySelector('.lightbox').style.display = 'none';
 }
+
+// F13
+// function that display the lightbox
 function openLightbox() {
   document.querySelector('.lightbox').style.display = 'grid';
 }
@@ -148,6 +163,7 @@ function openLightbox() {
 // _________________________________________________________________________________________________
 // _________________________________________________________________________________________________
 
+// F14
 function lightboxImageOrVideoTagCreator(media, src) {
   const lightboxImage = document.querySelector('.lightbox__media--image');
   const lightboxVideo = document.querySelector('.lightbox__media--video');
@@ -163,9 +179,28 @@ function lightboxImageOrVideoTagCreator(media, src) {
   }
 }
 
+// F15
 function displaySelectedImage(idOfImage) {
+  const lightbox = document.querySelector('.lightbox');
   const mediaPhotographSelected = document.getElementById(idOfImage);
   const mediaSelected = mediaPhotographSelected.querySelector('.media-photograph__media');
   const srcAttribute = mediaSelected.getAttribute('src');
+
+  lightbox.setAttribute('id', idOfImage);
+
   lightboxImageOrVideoTagCreator(mediaSelected, srcAttribute);
+}
+
+// F16
+function otherImage(mouvement) {
+  const lightboxId = document.querySelector('.lightbox').getAttribute('id');
+  let position = actualMediaId.indexOf(lightboxId);
+  position += mouvement;
+  if (position < 0) {
+    position = actualMediaId.length - 1;
+  } else if (position > actualMediaId.length - 1) {
+    position = 0;
+  }
+  const newId = actualMediaId[position];
+  displaySelectedImage(newId);
 }
