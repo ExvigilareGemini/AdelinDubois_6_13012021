@@ -33,12 +33,9 @@
     justify-self: center;
     padding: 10px;
   }
-  &__cadre {
-    @include cadre();
+  &__media {
+    width: 100%;
+    align-self: center;
     @include gridColRow(2,2);
-    border-radius: 5px;
-  }
-  &__image {
-    @include image();
   }
 }

@@ -62,11 +62,11 @@ function createHtmlDescriptionPhotographer(photographer) {
 //   }
 // }
 
-function isImageOrVideo(mediaToTest) {
+function imageOrVideoTagCreator(mediaToTest) {
   if ('image' in mediaToTest) {
-    return `<img src="../assets/src/Sample_Photos/${ActualPhotographerName}/${mediaToTest.image}" alt="" class="media-photograph__media" onclick="openLightbox()">`;
+    return `<img src="../assets/src/Sample_Photos/${ActualPhotographerName}/${mediaToTest.image}" alt="" class="media-photograph__media" onclick="openLightbox();displaySelectedImage(${mediaToTest.id})">`;
   }
-  return `<video src="../assets/src/Sample_Photos/${ActualPhotographerName}/${mediaToTest.video}" alt="" class="media-photograph__media" controls></video>`;
+  return `<video src="../assets/src/Sample_Photos/${ActualPhotographerName}/${mediaToTest.video}" alt="" class="media-photograph__media" onclick="openLightbox();displaySelectedImage(${mediaToTest.id})"></video>`;
 }
 
 // Pour pouvoir utiliser le factory il faudrait vérifier que le nom dans le JSON est soit image ou video
@@ -78,7 +78,7 @@ function createHtmlMediaPhotograph(media) {
     return `
   <article class="media-photograph" id="${media.id}">
     <div class="media-photograph__cadre">
-        ${isImageOrVideo(media)}
+        ${imageOrVideoTagCreator(media)}
     </div>
     <p class="media-photograph__description">${media.description}</p>
     <p class="media-photograph__price">${media.price}€</p>
@@ -104,8 +104,8 @@ function photographerPageCreator(data) {
   // eslint-disable-next-line eqeqeq
   const actualPhotographerDatas = data.photographers.find((el) => el.id == actualPhotographerId);
   ActualPhotographerName = actualPhotographerDatas.name;
-  document.querySelector('.description-photographer').innerHTML = createHtmlDescriptionPhotographer(actualPhotographerDatas);
-  document.querySelector('.media-photographer-container').innerHTML = mediaPhotographHtmlCompiler(data.media);
+  document.querySelector('.description-photographer').insertAdjacentHTML('afterbegin', createHtmlDescriptionPhotographer(actualPhotographerDatas));
+  document.querySelector('.media-photographer-container').insertAdjacentHTML('afterbegin', mediaPhotographHtmlCompiler(data.media));
 }
 
 // F09
@@ -117,6 +117,7 @@ function fetchDataToCreatePhotographersHTML() {
     .then((data) => photographerPageCreator(data))
     .catch((error) => console.log(`Erreur : ${error}`));
 }
+
 fetchDataToCreatePhotographersHTML();
 
 // _________________________________________________________________________________________________
@@ -141,4 +142,30 @@ function closeLightbox() {
 }
 function openLightbox() {
   document.querySelector('.lightbox').style.display = 'grid';
+}
+
+// _________________________________________________________________________________________________
+// _________________________________________________________________________________________________
+// _________________________________________________________________________________________________
+
+function lightboxImageOrVideoTagCreator(media, src) {
+  const lightboxImage = document.querySelector('.lightbox__media--image');
+  const lightboxVideo = document.querySelector('.lightbox__media--video');
+
+  if (media.tagName === 'IMG') {
+    lightboxImage.style.display = 'block';
+    lightboxImage.setAttribute('src', src);
+    lightboxVideo.style.display = 'none';
+  } else {
+    lightboxVideo.style.display = 'block';
+    lightboxVideo.setAttribute('src', src);
+    lightboxImage.style.display = 'none';
+  }
+}
+
+function displaySelectedImage(idOfImage) {
+  const mediaPhotographSelected = document.getElementById(idOfImage);
+  const mediaSelected = mediaPhotographSelected.querySelector('.media-photograph__media');
+  const srcAttribute = mediaSelected.getAttribute('src');
+  lightboxImageOrVideoTagCreator(mediaSelected, srcAttribute);
 }

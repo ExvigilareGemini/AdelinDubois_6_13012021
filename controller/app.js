@@ -53,7 +53,7 @@ function photographHTMLCompiler(arrayOfJson) {
 // function applying F02 to the photographer's container
 // argument is the array coming from JSON passing to F02
 function photographCreator(data) {
-  document.querySelector('.photograph-container').innerHTML = photographHTMLCompiler(data.photographers);
+  document.querySelector('.photograph-container').insertAdjacentHTML('afterbegin',photographHTMLCompiler(data.photographers));
 }
 
 // F04
