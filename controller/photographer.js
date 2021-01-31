@@ -218,3 +218,13 @@ function openModal() {
 function closeModal() {
   document.querySelector('.contact-modal').style.display = 'none';
 }
+
+// _________________________________________________________________________________________________
+// _________________________________________________________________________________________________
+// _________________________________________________________________________________________________
+
+document.querySelector('.contact-modal').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const values = document.querySelectorAll('.contact-modal__input');
+  values.forEach((el) => console.log(el.value));
+});
