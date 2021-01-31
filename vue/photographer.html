@@ -51,6 +51,19 @@
             <a class="fas fa-chevron-left lightbox__previous" onclick="otherImage(-1)"></a>
             <a class="fas fa-chevron-right lightbox__next" onclick="otherImage(1)"></a>
         </div>
+        <article class="contact-modal">
+            <h2 class="contact-modal__title">Contactez-moi Mimi Keel</h2>
+            <i class="fas fa-times contact-modal__cross" onclick="closeModal()"></i>
+            <label for="firstname" class="contact-modal__label">Prénom</label>
+            <input type="text" class="contact-modal__input" id="firstname">
+            <label for="lastname" class="contact-modal__label">Nom</label>
+            <input type="text" class="contact-modal__input" id="lastname">
+            <label for="email" class="contact-modal__label">Email</label>
+            <input type="text" class="contact-modal__input" id="email">
+            <label for="message" class="contact-modal__label">Votre message</label>
+            <input type="textarea" class="contact-modal__input contact-modal__input--textarea" id="message">
+            <input type="submit" value="Envoyer" class="contact-modal__button button">
+        </article>
     </main>
     
 

@@ -24,11 +24,20 @@
   }
 
   &__cadre {
-    @include cadre(12vh,12vh);
+    @include cadre(12vh, 12vh);
     border-radius: 100%;
   }
   &__image {
     @include image;
+  }
+  &__button {
+    position: fixed;
+    height: 35px;
+    bottom: 5vh;
+    left: 50%;
+    margin-left: -82px;
+    vertical-align: center;
+    z-index: 100;
   }
 }
 .showing-box {

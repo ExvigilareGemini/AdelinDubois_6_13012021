@@ -27,7 +27,7 @@ function createHtmlDescriptionPhotographer(photographer) {
         <li onclick="sortingByTag('${tagPhotograph}')" data-isChecked="" data-tagName="${tagPhotograph}" class="tag__link tag__link--smaller">#${tagPhotograph}</li>`).join('')
 }
         </ul>
-        <button class="button">Contactez-moi</button>
+        <button class="description-photographer__button button">Contactez-moi</button>
         `;
 }
 
@@ -204,3 +204,7 @@ function otherImage(mouvement) {
   const newId = actualMediaId[position];
   displaySelectedImage(newId);
 }
+
+// _________________________________________________________________________________________________
+// _________________________________________________________________________________________________
+// _________________________________________________________________________________________________

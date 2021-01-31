@@ -99,11 +99,6 @@ p {
 }
 
 .button {
-  position: fixed;
-  height: 35px;
-  bottom: 5vh;
-  left: 50%;
-  margin-left: -82px;
   background-color: #901c1c;
   color: #fafafa;
   border: none;
@@ -111,8 +106,6 @@ p {
   border-radius: 4px;
   font-size: 17px;
   font-weight: bold;
-  vertical-align: center;
-  z-index: 100;
 }
 
 .media-photograph {
@@ -138,6 +131,56 @@ p {
 .media-photograph__icon {
   margin-top: 5px;
   height: 12px;
+}
+
+.contact-modal {
+  position: fixed;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  z-index: 200;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  top: 0;
+  left: 0;
+  background-color: #db8876;
+}
+.contact-modal__title {
+  max-width: 80vw;
+  margin: 2vh 0 0 5vw;
+  font-size: 33px;
+  color: black;
+}
+.contact-modal__cross {
+  color: white;
+  margin: 2vh 0 0 5vw;
+  font-size: 30px;
+  justify-self: right;
+}
+.contact-modal__label {
+  width: 90vw;
+  margin: 2vh 5vw 1vh 5vw;
+  font-size: 25px;
+  color: black;
+  vertical-align: bottom;
+}
+.contact-modal__input {
+  width: 90vw;
+  height: 6vh;
+  margin: 0 5vw;
+  border-style: none;
+  border-radius: 8px;
+}
+.contact-modal__input--textarea {
+  height: 22vh;
+}
+.contact-modal__button {
+  position: relative;
+  padding-left: 50px;
+  padding-right: 50px;
+  left: 50%;
+  margin: 5vw 0 0 -84px;
 }
 
 .header {
@@ -263,6 +306,15 @@ p {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+.description-photographer__button {
+  position: fixed;
+  height: 35px;
+  bottom: 5vh;
+  left: 50%;
+  margin-left: -82px;
+  vertical-align: center;
+  z-index: 100;
 }
 
 .showing-box {

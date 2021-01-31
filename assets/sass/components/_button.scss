@@ -1,9 +1,4 @@
 .button {
-  position: fixed;
-  height: 35px;
-  bottom: 5vh;
-  left: 50%;
-  margin-left: -82px;
   background-color: map-get($map: $colors, $key: primary);
   color: map-get($map: $colors, $key: secondary-white);
   border: none;
@@ -11,6 +6,4 @@
   border-radius: 4px;
   font-size: map-get($map: $font-size, $key: mobile-medium);
   font-weight: bold;
-  vertical-align: center;
-  z-index: 100;
 }
