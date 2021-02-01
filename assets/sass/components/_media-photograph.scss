@@ -3,9 +3,16 @@
   display: flex;
   flex-wrap: wrap;
   font-weight: bold;
+  @include desktop_format-photographer {
+    width: 25vw;
+    margin: 10px 0;
+  }
   &__cadre {
     @include cadre(50vw, 90vw);
     border-radius: 5px;
+    @include desktop_format-photographer {
+      @include cadre(25vw, 25vw);
+    }
   }
   &__media {
     @include image;

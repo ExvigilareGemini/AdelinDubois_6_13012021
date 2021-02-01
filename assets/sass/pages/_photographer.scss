@@ -1,17 +1,30 @@
 .description-photographer {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 0 map-get($map: $margin, $key: mobile-horizon);
+  @include desktop_format-photographer {
+    padding: map-get($map: $margin, $key: mobile-vertical)
+      map-get($map: $margin, $key: mobile-horizon);
+    margin: 0 map-get($map: $margin, $key: desktop-horizon);
+    background-color: map-get($map: $colors, $key: secondary-white);
+  }
   &__text {
     flex-grow: 1;
     font-weight: bold;
     width: 60%;
+    @include desktop_format-photographer {
+      width: 75%;
+    }
     &__title {
       font-size: map-get($map: $font-size, $key: mobile-big);
       color: map-get($map: $colors, $key: secondary);
       margin-top: 15px;
       margin-bottom: 0;
+      @include desktop_format-photographer {
+        font-size: map-get($map: $font-size, $key: mobile-extra);
+      }
     }
     &__localisation {
       font-size: map-get($map: $font-size, $key: mobile-medium);
@@ -26,6 +39,12 @@
   &__cadre {
     @include cadre(12vh, 12vh);
     border-radius: 100%;
+    @include desktop_format-photographer {
+      @include cadre(10em, 10em);
+      position: absolute;
+      right: 5%;
+      border-radius: 100%;
+    }
   }
   &__image {
     @include image;
@@ -38,13 +57,23 @@
     margin-left: -82px;
     vertical-align: center;
     z-index: 100;
+    @include desktop_format-photographer {
+      position: absolute;
+      width: 25%;
+      max-width: 145px;
+      height: 50px;
+      top: 40px;
+      left: 300px;
+      font-size: map-get($map: $font-size, $key: mobile);
+    }
   }
 }
-.showing-box {
-  display: none;
-}
-.sorting-media {
-  &__select {
-    display: none;
+
+.media-photographer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  @include desktop_format-photographer {
+    margin: 0 map-get($map: $margin, $key: desktop-horizon);
   }
 }
