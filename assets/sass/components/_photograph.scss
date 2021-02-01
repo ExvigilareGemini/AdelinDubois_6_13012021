@@ -3,10 +3,17 @@
   flex-direction: column;
   align-items: center;
   margin-top: map-get($map: $margin, $key: mobile-vertical);
+  @include desktop_format{
+    min-width: 30%;
+    max-width: 35%;
+  }
   &__cadre {
     @include cadre(50vw, 50vw);
     position: relative;
     border-radius: 100%;
+    @include desktop_format{
+      @include cadre(18vw, 18vw);
+    }
   }
   &__image {
     @include image;
@@ -36,4 +43,5 @@
       font-size: map-get($map: $font-size, $key: mobile-small);
     }
   }
+
 }

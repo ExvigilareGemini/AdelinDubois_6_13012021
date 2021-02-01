@@ -2,21 +2,33 @@
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-
+  @include desktop_format {
+    flex-wrap: unset;
+  }
   &__imagelink {
     position: relative;
     width: 100%;
     margin: map-get($map: $margin, $key: mobile-vertical) 0
       map-get($map: $margin, $key: mobile-vertical)
       map-get($map: $margin, $key: mobile-horizon);
+      @include desktop_format{
+width: 30%;
+      }
     &__link {
       display: block;
       position: absolute;
       width: 40%;
       height: 100%;
+      @include desktop_format{
+        width: 100%;
+      }
     }
     &__image {
       width: 40%;
+      max-width: 300px;
+      @include desktop_format{
+        width: 100%;
+      }
     }
   }
 }
