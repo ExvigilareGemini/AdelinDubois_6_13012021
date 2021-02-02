@@ -211,7 +211,9 @@ function otherImage(mouvement) {
 // _________________________________________________________________________________________________
 
 // F17
+// put the name of photographer in the title then display the modal
 function openModal() {
+  document.querySelector('.contact-modal__title').textContent = `Contactez moi ${ActualPhotographerName}`;
   document.querySelector('.contact-modal').style.display = 'flex';
 }
 
