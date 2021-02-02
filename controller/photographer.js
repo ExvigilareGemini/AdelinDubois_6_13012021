@@ -1,6 +1,5 @@
 let actualPhotographerId = 0;
 let ActualPhotographerName = '';
-const actualMediaId = [];
 const arrayOfMedias = [];
 // _________________________________________________________________________________________________
 // _________________________________________________________________________________________________
@@ -102,10 +101,6 @@ function photographerPageCreator(data) {
   document.querySelector('.description-photographer').insertAdjacentHTML('afterbegin', createHtmlDescriptionPhotographer(actualPhotographerDatas));
   document.querySelector('.media-photographer-container').insertAdjacentHTML('afterbegin', mediaPhotographHtmlCompiler(data.media));
 
-  // put id of each media in actualMediaId[] for F16
-  const allId = document.querySelectorAll('.media-photograph');
-  allId.forEach((el) => actualMediaId.push(el.getAttribute('id')));
-
   // make sum of likes on each phot and display it, arrayofmedia come from F07
   const totalNumberOfLikes = arrayOfMedias.reduce((a, b) => ({ likes: a.likes + b.likes }));
   document.querySelector('.showing-box__numberOfLike').textContent = totalNumberOfLikes.likes;
@@ -122,7 +117,6 @@ function fetchDataToCreatePhotographersHTML() {
 }
 
 fetchDataToCreatePhotographersHTML();
-console.log(arrayOfMedias);
 
 // _________________________________________________________________________________________________
 // _________________________________________________________________________________________________
@@ -191,37 +185,40 @@ function displaySelectedImage(idOfImage) {
 // F16
 function showAdjacentImageLightbox(mouvement) {
   const lightboxId = document.querySelector('.lightbox').getAttribute('id');
-  let position = actualMediaId.indexOf(lightboxId);
+  // eslint-disable-next-line eqeqeq
+  let position = arrayOfMedias.findIndex((media) => media.id == lightboxId);
   position += mouvement;
   if (position < 0) {
-    position = actualMediaId.length - 1;
-  } else if (position > actualMediaId.length - 1) {
+    position = arrayOfMedias.length - 1;
+  } else if (position > arrayOfMedias.length - 1) {
     position = 0;
   }
-  const newId = actualMediaId[position];
+  const newId = arrayOfMedias[position].id;
   displaySelectedImage(newId);
 }
 
 // _________________________________________________________________________________________________
 // _________________________________________________________________________________________________
 // _________________________________________________________________________________________________
+// MODAL FUNCTIONS AND EVENT
 
 // F17
 // put the name of photographer in the title then display the modal
+// called with click on .description-photographer__button button
 function openModal() {
   document.querySelector('.contact-modal__title').textContent = `Contactez moi ${ActualPhotographerName}`;
   document.querySelector('.contact-modal').style.display = 'flex';
 }
 
 // F18
+// closingModal
+// called with click on contact-modal__cross
 function closeModal() {
   document.querySelector('.contact-modal').style.display = 'none';
 }
 
-// _________________________________________________________________________________________________
-// _________________________________________________________________________________________________
-// _________________________________________________________________________________________________
-
+// F19
+// On submit, prevent it and display inputs values in log
 document.querySelector('.contact-modal').addEventListener('submit', (e) => {
   e.preventDefault();
   const values = document.querySelectorAll('.contact-modal__input');
@@ -234,7 +231,6 @@ document.querySelector('.contact-modal').addEventListener('submit', (e) => {
 
 const sortingMediaSelector = document.querySelector('.sorting-media__select');
 sortingMediaSelector.addEventListener('change', () => console.log(sortingMediaSelector.value));
-// document.querySelector('.main').addEventListener('click', () => );
 
 function test() {
   console.log(arrayOfMedias.sort((a, b) => a.id - b.id));
