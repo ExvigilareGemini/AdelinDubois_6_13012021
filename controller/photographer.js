@@ -1,6 +1,7 @@
 let actualPhotographerId = 0;
 let ActualPhotographerName = '';
 const actualMediaId = [];
+const arrayOfMedias = [];
 // _________________________________________________________________________________________________
 // _________________________________________________________________________________________________
 // _________________________________________________________________________________________________
@@ -19,6 +20,7 @@ function createHtmlDescriptionPhotographer(photographer) {
           <p class="description-photographer__text__localisation">${photographer.city}, ${photographer.country}</p>
           <p class="description-photographer__text__slogan">${photographer.tagline}</p>
         </div>
+        <button class="description-photographer__button button" onclick="openModal()">Contactez-moi</button>
         <div class="description-photographer__cadre">
           <img src="../assets/src/Sample_Photos/Photographers_ID_Photos/${photographer.portrait}" alt="" class="description-photographer__image">
         </div>
@@ -27,27 +29,8 @@ function createHtmlDescriptionPhotographer(photographer) {
         <li onclick="sortingByTag('${tagPhotograph}')" data-isChecked="" data-tagName="${tagPhotograph}" class="tag__link tag__link--smaller">#${tagPhotograph}</li>`).join('')
 }
         </ul>
-        <button class="description-photographer__button button" onclick="openModal()">Contactez-moi</button>
         `;
 }
-
-// class Photo {
-//   constructor() {
-//     this.type = 'photo';
-//     this.create = function (mediaImage) {
-//       return `<img src="../assets/src/Sample_Photos/${ActualPhotographerName}/${mediaImage}" alt="" class="media-photograph__media">`;
-//     };
-//   }
-// }
-
-// class Video {
-//   constructor() {
-//     this.type = 'video';
-//     this.create = function (mediaImage) {
-//       return `<video src="../assets/src/Sample_Photos/${ActualPhotographerName}/${mediaImage}" alt="" class="media-photograph__media" controls></video>`;
-//     };
-//   }
-// }
 
 // class MediaFactory {
 //   constructor() {
@@ -80,7 +63,7 @@ function createHtmlMediaPhotograph(media) {
   // eslint-disable-next-line eqeqeq
   if (media.photographerId == actualPhotographerId) {
     return `
-  <article class="media-photograph" id="${media.id}">
+  <article class="media-photograph" id="${media.id}" data-date="${media.date}">
     <div class="media-photograph__cadre">
         ${imageOrVideoTagCreator(media)}
     </div>
@@ -100,6 +83,24 @@ function mediaPhotographHtmlCompiler(mediaJSON) {
   return mediaJSON.map(createHtmlMediaPhotograph).join('');
 }
 
+function mediaObjectCreator(el) {
+  if (el.photographerId == actualPhotographerId) {
+    arrayOfMedias.push({
+      id: el.id,
+      likes: el.likes,
+      description: el.description,
+      date: el.date,
+    });
+  }
+}
+
+// F08.5
+function objectCreator(data) {
+  const url = new URL(document.location.href);
+  actualPhotographerId = url.searchParams.get('id');
+  data.media.map((el) => mediaObjectCreator(el));
+}
+
 // F09
 // function get id from url then call functions to write html
 function photographerPageCreator(data) {
@@ -113,6 +114,7 @@ function photographerPageCreator(data) {
   // put id of each media in actualMediaId[] for F16
   const allId = document.querySelectorAll('.media-photograph');
   allId.forEach((el) => actualMediaId.push(el.getAttribute('id')));
+  objectCreator(data);
 }
 
 // F10
@@ -126,7 +128,6 @@ function fetchDataToCreatePhotographersHTML() {
 }
 
 fetchDataToCreatePhotographersHTML();
-
 // _________________________________________________________________________________________________
 // _________________________________________________________________________________________________
 // _________________________________________________________________________________________________
@@ -228,3 +229,15 @@ document.querySelector('.contact-modal').addEventListener('submit', (e) => {
   const values = document.querySelectorAll('.contact-modal__input');
   values.forEach((el) => console.log(el.value));
 });
+
+// _________________________________________________________________________________________________
+// _________________________________________________________________________________________________
+// _________________________________________________________________________________________________
+
+const sortingMediaSelector = document.querySelector('.sorting-media__select');
+sortingMediaSelector.addEventListener('change', () => console.log(sortingMediaSelector.value));
+console.log(arrayOfMedias);
+
+function test() {
+  console.log(arrayOfMedias.sort((a, b) => a.id - b.id));
+}

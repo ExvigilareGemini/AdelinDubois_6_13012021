@@ -26,9 +26,12 @@
 
         <!-- SORTING SELECTOR -->
         <div class="sorting-media">
-            <label for="" class="sorting-media__label"></label>
-            <select name="" id="" class="sorting-media__select">
-                <option value="" class="sorting-media__option"></option>
+            <label for="sorting-media__select" class="sorting-media__label">Trier par</label>
+            <select name="" id="sorting-media__select" class="sorting-media__select">
+                <option value="0"  class="sorting-media__option sorting-media__option--disabled" selected disabled>Trier par</option>
+                <option value="1" class="sorting-media__option">Popularité</option>
+                <option value="2" class="sorting-media__option">Date</option>
+                <option value="3" class="sorting-media__option">Titre</option>
             </select>
         </div>
 
@@ -51,6 +54,8 @@
             <a class="fas fa-chevron-left lightbox__previous" onclick="otherImage(-1)"></a>
             <a class="fas fa-chevron-right lightbox__next" onclick="otherImage(1)"></a>
         </div>
+
+        <!-- MODAL -->
         <article class="modal">
             <form action="" class="contact-modal">
                 <h2 class="contact-modal__title">Contactez-moi Mimi Keel</h2>

@@ -10,6 +10,7 @@
   &__cadre {
     @include cadre(50vw, 90vw);
     border-radius: 5px;
+    cursor: pointer;
     @include desktop_format-photographer {
       @include cadre(25vw, 25vw);
     }

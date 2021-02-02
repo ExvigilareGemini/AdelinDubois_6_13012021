@@ -15,7 +15,7 @@
     font-weight: bold;
     width: 60%;
     @include desktop_format-photographer {
-      width: 75%;
+      width: unset;
     }
     &__title {
       font-size: map-get($map: $font-size, $key: mobile-big);
@@ -58,13 +58,12 @@
     vertical-align: center;
     z-index: 100;
     @include desktop_format-photographer {
-      position: absolute;
-      width: 25%;
-      max-width: 145px;
+      position: unset;
+      width: 145px;
       height: 50px;
-      top: 40px;
-      left: 300px;
+      margin: 0 15em 0 0;
       font-size: map-get($map: $font-size, $key: mobile);
+      
     }
   }
 }

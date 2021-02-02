@@ -130,8 +130,8 @@ p {
   background-color: #901c1c;
   color: #fafafa;
   border: none;
-  padding: 7px 20px;
   border-radius: 4px;
+  padding: 7px 20px;
   font-size: 17px;
   font-weight: bold;
   cursor: pointer;
@@ -154,6 +154,7 @@ p {
   height: 50vw;
   width: 90vw;
   border-radius: 5px;
+  cursor: pointer;
 }
 @media screen and (min-width: 620px) {
   .media-photograph__cadre {
@@ -230,9 +231,63 @@ p {
 .showing-box {
   display: none;
 }
+@media screen and (min-width: 620px) {
+  .showing-box {
+    display: block;
+  }
+}
 
-.sorting-media__select {
+.sorting-media {
   display: none;
+  width: fit-content;
+  position: relative;
+  margin: 10px 0 0 50px;
+  align-items: center;
+  font-weight: bold;
+}
+.sorting-media__label {
+  color: black;
+  margin-right: 20px;
+}
+.sorting-media__select {
+  background-color: #901c1c;
+  color: #fafafa;
+  border: none;
+  border-radius: 4px;
+  display: none;
+  padding: 10px 30px 10px 15px;
+  appearance: none;
+}
+@media screen and (min-width: 620px) {
+  .sorting-media__select {
+    display: block;
+  }
+}
+.sorting-media__select:focus > .sorting-media::after {
+  background-color: white;
+}
+.sorting-media__option {
+  height: 50px;
+  color: white;
+}
+.sorting-media__option--disabled {
+  background-color: #7b1818;
+}
+.sorting-media::after {
+  content: ">";
+  font: 17px "Consolas", monospace;
+  color: white;
+  transform: rotate(90deg);
+  right: 10px;
+  top: 20%;
+  position: absolute;
+  pointer-events: none;
+  transition: all 1s;
+}
+@media screen and (min-width: 620px) {
+  .sorting-media {
+    display: flex;
+  }
 }
 
 .header {
@@ -379,7 +434,7 @@ p {
 }
 @media screen and (min-width: 620px) {
   .description-photographer__text {
-    width: 75%;
+    width: unset;
   }
 }
 .description-photographer__text__title {
@@ -433,12 +488,10 @@ p {
 }
 @media screen and (min-width: 620px) {
   .description-photographer__button {
-    position: absolute;
-    width: 25%;
-    max-width: 145px;
+    position: unset;
+    width: 145px;
     height: 50px;
-    top: 40px;
-    left: 300px;
+    margin: 0 15em 0 0;
     font-size: 13px;
   }
 }

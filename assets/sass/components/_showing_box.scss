@@ -1,3 +1,6 @@
 .showing-box {
     display: none;
+    @include desktop_format-photographer {
+      display: block;
+    }
   }

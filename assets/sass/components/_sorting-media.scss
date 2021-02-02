@@ -1,6 +1,46 @@
 .sorting-media {
-    &__select {
-      display: none;
+  display: none;
+  width: fit-content;
+  position: relative;
+  margin: 10px 0 0 map-get($map: $margin, $key: desktop-horizon);
+  align-items: center;
+  font-weight: bold;
+  &__label {
+    color: black;
+    margin-right: 20px;
+  }
+  &__select {
+    @include redActionnable;
+    display: none;
+    padding: 10px 30px 10px 15px;
+    appearance: none;
+    @include desktop_format-photographer {
+      display: block;
+    }
+    &:focus  > .sorting-media::after {
+      background-color: white;
     }
   }
-  
+  &__option {
+    height: 50px;
+    color: white;
+    &--disabled {
+      background-color: darken(map-get($map: $colors, $key: primary), 5);
+    }
+  }
+  // white arrow
+  &::after {
+    content: ">";
+    font: 17px "Consolas", monospace;
+    color: white;
+    transform: rotate(90deg);
+    right: 10px;
+    top: 20%;
+    position: absolute;
+    pointer-events: none;
+    transition: all 1s;
+  }
+  @include desktop_format-photographer {
+    display: flex;
+  }
+}
