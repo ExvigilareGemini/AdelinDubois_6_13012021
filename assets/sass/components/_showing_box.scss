@@ -1,6 +1,25 @@
 .showing-box {
-    display: none;
-    @include desktop_format-photographer {
-      display: block;
-    }
+  display: none;
+  position: fixed;
+  background-color: map-get($map: $colors, $key: secondary);
+  bottom: 0;
+  right: 3vw;
+  border-radius: 5px 5px 0 0;
+  width: 250px;
+  font-weight: bold;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  & > p,
+  i {
+    color: black;
+    font-size: map-get($map: $font-size, $key: mobile-medium);
   }
+  &__price {
+    justify-self: right;
+    padding-left: 20%;
+  }
+  @include desktop_format-photographer {
+    display: flex;
+  }
+}

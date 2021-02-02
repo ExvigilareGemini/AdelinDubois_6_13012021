@@ -230,10 +230,29 @@ p {
 
 .showing-box {
   display: none;
+  position: fixed;
+  background-color: #d3573c;
+  bottom: 0;
+  right: 3vw;
+  border-radius: 5px 5px 0 0;
+  width: 250px;
+  font-weight: bold;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+.showing-box > p,
+.showing-box i {
+  color: black;
+  font-size: 17px;
+}
+.showing-box__price {
+  justify-self: right;
+  padding-left: 20%;
 }
 @media screen and (min-width: 620px) {
   .showing-box {
-    display: block;
+    display: flex;
   }
 }
 
