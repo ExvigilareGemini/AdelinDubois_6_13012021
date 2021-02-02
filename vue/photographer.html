@@ -40,9 +40,9 @@
 
         <!-- INFORMATION ABOUT LIKES AND PRICE -->
         <div class="showing-box">
-            <p class="showing-box__numberOfLike">297081</p>
+            <p class="showing-box__numberOfLike"></p>
             <i class="fas fa-heart showing-box__icon" aria-label="likes" ></i>
-            <p class="showing-box__price">300€ / jour</p>
+            <p class="showing-box__price"></p>
         </div>    
 
         <!-- LIGHTBOX -->
@@ -51,8 +51,8 @@
             <img src="" alt="" class="lightbox__media lightbox__media--image">
             <video src="" class="lightbox__media lightbox__media--video" controls></video>
             <p class="lightbox__description"></p>
-            <a class="fas fa-chevron-left lightbox__previous" onclick="otherImage(-1)"></a>
-            <a class="fas fa-chevron-right lightbox__next" onclick="otherImage(1)"></a>
+            <a class="fas fa-chevron-left lightbox__previous" onclick="showAdjacentImageLightbox(-1)"></a>
+            <a class="fas fa-chevron-right lightbox__next" onclick="showAdjacentImageLightbox(1)"></a>
         </div>
 
         <!-- MODAL -->

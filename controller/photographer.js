@@ -10,22 +10,23 @@ const arrayOfMedias = [];
 
 // F05
 // function creating HTML and populate it with datas coming from data.json
-// argument: an array containing datas about each photographers from json
-// firstly, the function get data about the actual photographer using actualPhotographerId variable
-// then writing html using thd datas
-function createHtmlDescriptionPhotographer(photographer) {
+// argument: array of objets containing datas about actual photographer
+// firstly, it set the price of photographer in the .showing-box
+// then writing html using thd datas about actual photographer
+function createHtmlDescriptionPhotographer(actualPhotographer) {
+  document.querySelector('.showing-box__price').textContent = `${actualPhotographer.price}€ / jour`;
   return `
         <div class="description-photographer__text">
-          <h1 class="description-photographer__text__title">${photographer.name}</h1>
-          <p class="description-photographer__text__localisation">${photographer.city}, ${photographer.country}</p>
-          <p class="description-photographer__text__slogan">${photographer.tagline}</p>
+          <h1 class="description-photographer__text__title">${actualPhotographer.name}</h1>
+          <p class="description-photographer__text__localisation">${actualPhotographer.city}, ${actualPhotographer.country}</p>
+          <p class="description-photographer__text__slogan">${actualPhotographer.tagline}</p>
         </div>
         <button class="description-photographer__button button" onclick="openModal()">Contactez-moi</button>
         <div class="description-photographer__cadre">
-          <img src="../assets/src/Sample_Photos/Photographers_ID_Photos/${photographer.portrait}" alt="" class="description-photographer__image">
+          <img src="../assets/src/Sample_Photos/Photographers_ID_Photos/${actualPhotographer.portrait}" alt="" class="description-photographer__image">
         </div>
         <ul class="tag tag--left" aria-label="photographer categories">
-        ${photographer.tags.map((tagPhotograph) => `
+        ${actualPhotographer.tags.map((tagPhotograph) => `
         <li onclick="sortingByTag('${tagPhotograph}')" data-isChecked="" data-tagName="${tagPhotograph}" class="tag__link tag__link--smaller">#${tagPhotograph}</li>`).join('')
 }
         </ul>
@@ -62,6 +63,13 @@ function imageOrVideoTagCreator(mediaToTest) {
 function createHtmlMediaPhotograph(media) {
   // eslint-disable-next-line eqeqeq
   if (media.photographerId == actualPhotographerId) {
+    arrayOfMedias.push({
+      id: media.id,
+      likes: media.likes,
+      description: media.description,
+      date: media.date,
+    });
+
     return `
   <article class="media-photograph" id="${media.id}" data-date="${media.date}">
     <div class="media-photograph__cadre">
@@ -83,24 +91,6 @@ function mediaPhotographHtmlCompiler(mediaJSON) {
   return mediaJSON.map(createHtmlMediaPhotograph).join('');
 }
 
-function mediaObjectCreator(el) {
-  if (el.photographerId == actualPhotographerId) {
-    arrayOfMedias.push({
-      id: el.id,
-      likes: el.likes,
-      description: el.description,
-      date: el.date,
-    });
-  }
-}
-
-// F08.5
-function objectCreator(data) {
-  const url = new URL(document.location.href);
-  actualPhotographerId = url.searchParams.get('id');
-  data.media.map((el) => mediaObjectCreator(el));
-}
-
 // F09
 // function get id from url then call functions to write html
 function photographerPageCreator(data) {
@@ -111,10 +101,14 @@ function photographerPageCreator(data) {
   ActualPhotographerName = actualPhotographerDatas.name;
   document.querySelector('.description-photographer').insertAdjacentHTML('afterbegin', createHtmlDescriptionPhotographer(actualPhotographerDatas));
   document.querySelector('.media-photographer-container').insertAdjacentHTML('afterbegin', mediaPhotographHtmlCompiler(data.media));
+
   // put id of each media in actualMediaId[] for F16
   const allId = document.querySelectorAll('.media-photograph');
   allId.forEach((el) => actualMediaId.push(el.getAttribute('id')));
-  objectCreator(data);
+
+  // make sum of likes on each phot and display it, arrayofmedia come from F07
+  const totalNumberOfLikes = arrayOfMedias.reduce((a, b) => ({ likes: a.likes + b.likes }));
+  document.querySelector('.showing-box__numberOfLike').textContent = totalNumberOfLikes.likes;
 }
 
 // F10
@@ -128,6 +122,8 @@ function fetchDataToCreatePhotographersHTML() {
 }
 
 fetchDataToCreatePhotographersHTML();
+console.log(arrayOfMedias);
+
 // _________________________________________________________________________________________________
 // _________________________________________________________________________________________________
 // _________________________________________________________________________________________________
@@ -193,7 +189,7 @@ function displaySelectedImage(idOfImage) {
 }
 
 // F16
-function otherImage(mouvement) {
+function showAdjacentImageLightbox(mouvement) {
   const lightboxId = document.querySelector('.lightbox').getAttribute('id');
   let position = actualMediaId.indexOf(lightboxId);
   position += mouvement;
@@ -238,7 +234,7 @@ document.querySelector('.contact-modal').addEventListener('submit', (e) => {
 
 const sortingMediaSelector = document.querySelector('.sorting-media__select');
 sortingMediaSelector.addEventListener('change', () => console.log(sortingMediaSelector.value));
-console.log(arrayOfMedias);
+// document.querySelector('.main').addEventListener('click', () => );
 
 function test() {
   console.log(arrayOfMedias.sort((a, b) => a.id - b.id));
