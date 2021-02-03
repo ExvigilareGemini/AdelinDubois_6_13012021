@@ -53,7 +53,8 @@ function photographHTMLCompiler(arrayOfJson) {
 // function applying F02 to the photographer's container
 // argument is the array coming from JSON passing to F02
 function photographCreator(data) {
-  document.querySelector('.photograph-container').insertAdjacentHTML('afterbegin',photographHTMLCompiler(data.photographers));
+  document.querySelector('.photograph-container').insertAdjacentHTML('afterbegin', photographHTMLCompiler(data.photographers));
+  isRedirectFromPhotographerPages();
 }
 
 // F04
@@ -128,4 +129,13 @@ function sortingByTag(tagName) {
   }
 
   displayingArticles();
+}
+
+// F09
+function isRedirectFromPhotographerPages() {
+  const url = new URL(document.location.href);
+  const isTagInUrl = url.searchParams.get('tagname');
+  if (isTagInUrl !== null) {
+    sortingByTag(isTagInUrl);
+  }
 }

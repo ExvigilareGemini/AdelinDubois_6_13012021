@@ -26,28 +26,16 @@ function createHtmlDescriptionPhotographer(actualPhotographer) {
         </div>
         <ul class="tag tag--left" aria-label="photographer categories">
         ${actualPhotographer.tags.map((tagPhotograph) => `
-        <li onclick="sortingByTag('${tagPhotograph}')" data-isChecked="" data-tagName="${tagPhotograph}" class="tag__link tag__link--smaller">#${tagPhotograph}</li>`).join('')
+        <a href="../index.html?tagname=${tagPhotograph}">
+        <li onclick="sortingByTag('${tagPhotograph}')" class="tag__link tag__link--smaller">#${tagPhotograph}</li>
+        </a>`).join('')
 }
         </ul>
         `;
 }
 
-// class MediaFactory {
-//   constructor() {
-//     this.createMediaHTML = function (type) {
-//       let media;
-//       if (type === 'jpg') {
-//         media = new Photo();
-//       } else if (type === 'mp4') {
-//         media = new Video();
-//       }
-//       return media;
-//     };
-//   }
-// }
-
 // F06
-function imageOrVideoTagCreator(mediaToTest) {
+function mediaTagFactory(mediaToTest) {
   if ('image' in mediaToTest) {
     return `<img src="../assets/src/Sample_Photos/${ActualPhotographerName}/${mediaToTest.image}" alt="" class="media-photograph__media" onclick="openLightbox();displaySelectedImage(${mediaToTest.id})">`;
   }
@@ -72,7 +60,7 @@ function createHtmlMediaPhotograph(media) {
     return `
   <article class="media-photograph" data-id="${media.id}" data-date="${media.date}" data-liked="false">
     <div class="media-photograph__cadre">
-        ${imageOrVideoTagCreator(media)}
+        ${mediaTagFactory(media)}
     </div>
     <p class="media-photograph__description">${media.description}</p>
     <p class="media-photograph__price">${media.price}€</p>
@@ -163,7 +151,7 @@ function openLightbox() {
 // _________________________________________________________________________________________________
 
 // F14
-function lightboxImageOrVideoTagCreator(media, src) {
+function lightboxmediaTagFactory(media, src) {
   const lightboxImage = document.querySelector('.lightbox__media--image');
   const lightboxVideo = document.querySelector('.lightbox__media--video');
 
@@ -187,7 +175,7 @@ function displaySelectedImage(idOfImage) {
 
   lightbox.setAttribute('data-id', idOfImage);
 
-  lightboxImageOrVideoTagCreator(mediaSelected, srcAttribute);
+  lightboxmediaTagFactory(mediaSelected, srcAttribute);
 }
 
 // F16
