@@ -228,10 +228,37 @@ document.querySelector('.contact-modal').addEventListener('submit', (e) => {
 // _________________________________________________________________________________________________
 // _________________________________________________________________________________________________
 // _________________________________________________________________________________________________
+const sortingMediaSelect = document.querySelector('.sorting-media__select');
 
-const sortingMediaSelector = document.querySelector('.sorting-media__select');
-sortingMediaSelector.addEventListener('change', () => console.log(sortingMediaSelector.value));
-
-function test() {
-  console.log(arrayOfMedias.sort((a, b) => a.id - b.id));
+function sortAndDisplay(propertyName) {
+  let orderPosition = 0;
+  arrayOfMedias.sort((a, b) => ((a[propertyName] > b[propertyName]) ? 1 : -1));
+  arrayOfMedias.forEach((el) => {
+    document.getElementById(el.id).style.order = orderPosition;
+    orderPosition += 1;
+  });
 }
+
+function sortingMedias() {
+  switch (sortingMediaSelect.value) {
+    case '1':
+      sortAndDisplay('likes');
+      break;
+    case '2':
+      sortAndDisplay('date');
+      break;
+    case '3':
+      sortAndDisplay('description');
+      break;
+    default:
+      console.log('0');
+  }
+}
+
+sortingMediaSelect.addEventListener('change', () => sortingMedias());
+
+// function teste() {
+//   arrayOfMedias.forEach((el) => console.log(el))
+// }
+
+// document.querySelector('.main').addEventListener('click', () => teste());
