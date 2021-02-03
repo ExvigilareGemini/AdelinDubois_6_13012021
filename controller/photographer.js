@@ -70,7 +70,7 @@ function createHtmlMediaPhotograph(media) {
     });
 
     return `
-  <article class="media-photograph" id="${media.id}" data-date="${media.date}">
+  <article class="media-photograph" data-id="${media.id}" data-date="${media.date}" data-liked="false">
     <div class="media-photograph__cadre">
         ${imageOrVideoTagCreator(media)}
     </div>
@@ -126,12 +126,20 @@ fetchDataToCreatePhotographersHTML();
 // when click on heart icon of .media-photograph, increase number of likes displayed in
 // <p> .media-photograph__likes
 // argument: is the id of the media created in F06
-// firstly, select .media-photograph with corrsponding id, then select <p> .media-photograph__likes
+// first, select .media-photograph with corrsponding data-id, then get <p> .media-photograph__likes
 // inside this one, transform text in Int then add 1, then write it with .textContent
 function incrementLikes(idOfMedia) {
-  const mediaPhotographLiked = document.getElementById(idOfMedia);
-  const likesDisplayed = mediaPhotographLiked.querySelector('.media-photograph__likes');
-  likesDisplayed.textContent = parseInt(likesDisplayed.textContent, 10) + 1;
+  const mediaPhotographLiked = document.querySelector(`[data-id='${idOfMedia}']`);
+  const numberOfLikesDisplayed = mediaPhotographLiked.querySelector('.media-photograph__likes');
+  const isAlreadyLiked = mediaPhotographLiked.dataset.liked;
+
+  if (isAlreadyLiked === 'true') {
+    numberOfLikesDisplayed.textContent = parseInt(numberOfLikesDisplayed.textContent, 10) - 1;
+    mediaPhotographLiked.setAttribute('data-liked', 'false');
+  } else {
+    numberOfLikesDisplayed.textContent = parseInt(numberOfLikesDisplayed.textContent, 10) + 1;
+    mediaPhotographLiked.setAttribute('data-liked', 'true');
+  }
 }
 
 // _________________________________________________________________________________________________
@@ -173,18 +181,18 @@ function lightboxImageOrVideoTagCreator(media, src) {
 // F15
 function displaySelectedImage(idOfImage) {
   const lightbox = document.querySelector('.lightbox');
-  const mediaPhotographSelected = document.getElementById(idOfImage);
+  const mediaPhotographSelected = document.querySelector(`[data-id='${idOfImage}']`);
   const mediaSelected = mediaPhotographSelected.querySelector('.media-photograph__media');
   const srcAttribute = mediaSelected.getAttribute('src');
 
-  lightbox.setAttribute('id', idOfImage);
+  lightbox.setAttribute('data-id', idOfImage);
 
   lightboxImageOrVideoTagCreator(mediaSelected, srcAttribute);
 }
 
 // F16
 function showAdjacentImageLightbox(mouvement) {
-  const lightboxId = document.querySelector('.lightbox').getAttribute('id');
+  const lightboxId = document.querySelector('.lightbox').getAttribute('data-id');
   // eslint-disable-next-line eqeqeq
   let position = arrayOfMedias.findIndex((media) => media.id == lightboxId);
   position += mouvement;
@@ -234,7 +242,7 @@ function sortAndDisplay(propertyName) {
   let orderPosition = 0;
   arrayOfMedias.sort((a, b) => ((a[propertyName] > b[propertyName]) ? 1 : -1));
   arrayOfMedias.forEach((el) => {
-    document.getElementById(el.id).style.order = orderPosition;
+    document.querySelector(`[data-id='${el.id}']`).style.order = orderPosition;
     orderPosition += 1;
   });
 }
