@@ -13,7 +13,7 @@
       map-get($map: $margin, $key: mobile-horizon);
     @include desktop_format {
       margin-left: map-get($map: $margin, $key: desktop-horizon);
-      width: 30%;
+      width: fit-content;
     }
     &__link {
       display: block;

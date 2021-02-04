@@ -288,7 +288,7 @@ a {
 @media screen and (min-width: 670px) {
   .header__imagelink {
     margin-left: 50px;
-    width: 30%;
+    width: fit-content;
   }
 }
 .header__imagelink__link {
