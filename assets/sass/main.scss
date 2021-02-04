@@ -12,13 +12,12 @@
 @import "./components/tag";
 @import "./components/button";
 @import "./components/media-photograph";
-@import "./components/modal";
 @import "./components/showing_box";
 @import	"./components/sorting-media";
 // layouts
 @import "./layouts/header";
+@import "./layouts/modal";
 @import "./layouts/lightbox";
-
 // pages
 @import "./pages/acceuil";
 @import "./pages/photographer";

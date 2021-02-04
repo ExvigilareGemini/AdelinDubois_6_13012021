@@ -18,7 +18,13 @@
   &__media {
     @include image;
   }
+  &__text-container {
+    @include TextEllipsis;
+    flex-grow: 1;
+    display: flex;
+  }
   &__description {
+    @include TextEllipsis;
     flex-grow: 1;
   }
   &__icon {

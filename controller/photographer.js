@@ -71,10 +71,12 @@ function createHtmlMediaPhotograph(media) {
     <div class="media-photograph__cadre">
         ${mediaTagFactory(media)}
     </div>
-    <p class="media-photograph__description">${media.description}</p>
-    <p class="media-photograph__price">${media.price}€</p>
-    <p class="media-photograph__likes">${media.likes}</p>
-    <i class="fas fa-heart media-photograph__icon" aria-label="likes" onclick="incrementLikes(${media.id})"></i>
+    <div class="media-photograph__text-container">
+        <p class="media-photograph__description">${media.description}</p>
+        <p class="media-photograph__price">${media.price}€</p>
+        <p class="media-photograph__likes">${media.likes}</p>
+        <i class="fas fa-heart media-photograph__icon" aria-label="likes" onclick="incrementLikes(${media.id})"></i>
+    </div>
   </article>
         `;
   }

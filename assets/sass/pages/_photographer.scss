@@ -6,8 +6,7 @@
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 0 map-get($map: $margin, $key: mobile-horizon);
+  margin: 0 map-get($map: $margin, $key: mobile-horizon) map-get($map: $margin, $key: mobile-vertical);
   @include desktop_format-photographer {
     padding: map-get($map: $margin, $key: mobile-vertical)
       map-get($map: $margin, $key: mobile-horizon);
@@ -20,6 +19,7 @@
     width: 60%;
     @include desktop_format-photographer {
       width: unset;
+      flex-grow: 0;
     }
     &__title {
       font-size: map-get($map: $font-size, $key: mobile-big);
@@ -65,7 +65,7 @@
       position: unset;
       width: 145px;
       height: 50px;
-      margin: 0 15em 0 0;
+      margin: map-get($map: $margin, $key: mobile-vertical) 0 0 map-get($map: $margin, $key: mobile-horizon) ;
       font-size: map-get($map: $font-size, $key: mobile);
       
     }
