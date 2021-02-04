@@ -213,10 +213,21 @@ function showAdjacentImageLightbox(mouvement) {
 // _________________________________________________________________________________________________
 // MODAL FUNCTIONS AND EVENT
 
+function modalBackgroundDesactivated(opacityValue, pointerEventValue) {
+  const mainHTML = document.querySelector('.main');
+  const headerHTML = document.querySelector('.header');
+
+  mainHTML.style.opacity = opacityValue;
+  mainHTML.style.pointerEvents = pointerEventValue;
+  headerHTML.style.opacity = opacityValue;
+  headerHTML.style.pointerEvents = pointerEventValue;
+}
+
 // F17
 // put the name of photographer in the title then display the modal
 // called with click on .description-photographer__button button
 function openModal() {
+  modalBackgroundDesactivated('0.5', 'none');
   document.querySelector('.contact-modal__title').textContent = `Contactez moi ${ActualPhotographerName}`;
   document.querySelector('.contact-modal').style.display = 'flex';
 }
@@ -225,6 +236,7 @@ function openModal() {
 // closingModal
 // called with click on contact-modal__cross
 function closeModal() {
+  modalBackgroundDesactivated('1', 'auto');
   document.querySelector('.contact-modal').style.display = 'none';
 }
 
