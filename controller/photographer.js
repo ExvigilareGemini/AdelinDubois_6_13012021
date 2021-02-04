@@ -64,7 +64,6 @@ function mediaTagFactory(mediaToTest) {
 // firstly testing if media os from actual photographer by checking id, if not ->  return ''
 // then create HTML code with template strings using media datas
 function createHtmlMediaPhotograph(media) {
-  // eslint-disable-next-line eqeqeq
   if (media.photographerId == actualPhotographerId) {
     return `
   <article class="media-photograph" data-id="${media.id}" data-date="${media.date}" data-liked="false">
@@ -89,20 +88,22 @@ function mediaPhotographHtmlCompiler(mediaJSON) {
   return mediaJSON.map(createHtmlMediaPhotograph).join('');
 }
 
+function displayTotalNumberOfLikes() {
+  const totalNumberOfLikes = arrayOfMedias.reduce((a, b) => ({ likes: a.likes + b.likes }));
+  document.querySelector('.showing-box__numberOfLike').textContent = totalNumberOfLikes.likes;
+}
+
 // F09
 // function get id from url then call functions to write html
 function photographerPageCreator(data) {
   const url = new URL(document.location.href);
   actualPhotographerId = url.searchParams.get('id');
-  // eslint-disable-next-line eqeqeq
   const actualPhotographerDatas = data.photographers.find((el) => el.id == actualPhotographerId);
   ActualPhotographerName = actualPhotographerDatas.name;
   document.querySelector('.description-photographer').insertAdjacentHTML('afterbegin', createHtmlDescriptionPhotographer(actualPhotographerDatas));
   document.querySelector('.media-photographer-container').insertAdjacentHTML('afterbegin', mediaPhotographHtmlCompiler(data.media));
 
-  // make sum of likes on each phot and display it, arrayofmedia come from F07
-  const totalNumberOfLikes = arrayOfMedias.reduce((a, b) => ({ likes: a.likes + b.likes }));
-  document.querySelector('.showing-box__numberOfLike').textContent = totalNumberOfLikes.likes;
+  displayTotalNumberOfLikes();
 }
 
 // F10
@@ -131,14 +132,18 @@ function incrementLikes(idOfMedia) {
   const mediaPhotographLiked = document.querySelector(`[data-id='${idOfMedia}']`);
   const numberOfLikesDisplayed = mediaPhotographLiked.querySelector('.media-photograph__likes');
   const isAlreadyLiked = mediaPhotographLiked.dataset.liked;
+  const numberOfLikeForThisMedia = arrayOfMedias.find((el) => el.id == idOfMedia);
 
   if (isAlreadyLiked === 'true') {
     numberOfLikesDisplayed.textContent = parseInt(numberOfLikesDisplayed.textContent, 10) - 1;
     mediaPhotographLiked.setAttribute('data-liked', 'false');
+    numberOfLikeForThisMedia.likes -= 1;
   } else {
     numberOfLikesDisplayed.textContent = parseInt(numberOfLikesDisplayed.textContent, 10) + 1;
     mediaPhotographLiked.setAttribute('data-liked', 'true');
+    numberOfLikeForThisMedia.likes += 1;
   }
+  displayTotalNumberOfLikes();
 }
 
 // _________________________________________________________________________________________________
@@ -180,7 +185,6 @@ function lightboxmediaTagFactory(type, src) {
 // F15
 function displaySelectedImage(idOfImage) {
   const lightbox = document.querySelector('.lightbox');
-  // eslint-disable-next-line eqeqeq
   const positionInArray = arrayOfMedias.findIndex((media) => media.id == idOfImage);
   const srcOfMedia = arrayOfMedias[positionInArray].src;
   const typeOfMedia = arrayOfMedias[positionInArray].type;
@@ -196,7 +200,6 @@ function displaySelectedImage(idOfImage) {
 // F16
 function showAdjacentImageLightbox(mouvement) {
   const lightboxId = document.querySelector('.lightbox').getAttribute('data-id');
-  // eslint-disable-next-line eqeqeq
   let position = arrayOfMedias.findIndex((media) => media.id == lightboxId);
   position += mouvement;
   if (position < 0) {
