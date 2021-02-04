@@ -48,9 +48,11 @@
         <!-- LIGHTBOX -->
         <div class="lightbox">
             <i class="fas fa-times lightbox__cross" onclick="closeLightbox()"></i>
-            <img src="" alt="" class="lightbox__media lightbox__media--image">
-            <video src="" class="lightbox__media lightbox__media--video" controls></video>
-            <p class="lightbox__description"></p>
+            <div class="lightbox__media-description-container">
+                <img src="" alt="" class="lightbox__media lightbox__media--image">
+                <video src="" class="lightbox__media lightbox__media--video" controls></video>
+                <p class="lightbox__description"></p>
+            </div>
             <a class="fas fa-chevron-left lightbox__previous" onclick="showAdjacentImageLightbox(-1)"></a>
             <a class="fas fa-chevron-right lightbox__next" onclick="showAdjacentImageLightbox(1)"></a>
         </div>

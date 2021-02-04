@@ -37,8 +37,24 @@ function createHtmlDescriptionPhotographer(actualPhotographer) {
 // F06
 function mediaTagFactory(mediaToTest) {
   if ('image' in mediaToTest) {
+    arrayOfMedias.push({
+      id: mediaToTest.id,
+      likes: mediaToTest.likes,
+      description: mediaToTest.description,
+      date: mediaToTest.date,
+      src: `../assets/src/Sample_Photos/${ActualPhotographerName}/${mediaToTest.image}`,
+      type: 'img',
+    });
     return `<img src="../assets/src/Sample_Photos/${ActualPhotographerName}/${mediaToTest.image}" alt="" class="media-photograph__media" onclick="openLightbox();displaySelectedImage(${mediaToTest.id})">`;
   }
+  arrayOfMedias.push({
+    id: mediaToTest.id,
+    likes: mediaToTest.likes,
+    description: mediaToTest.description,
+    date: mediaToTest.date,
+    src: `../assets/src/Sample_Photos/${ActualPhotographerName}/${mediaToTest.video}`,
+    type: 'video',
+  });
   return `<video src="../assets/src/Sample_Photos/${ActualPhotographerName}/${mediaToTest.video}" alt="" class="media-photograph__media" onclick="openLightbox();displaySelectedImage(${mediaToTest.id})"></video>`;
 }
 
@@ -50,13 +66,6 @@ function mediaTagFactory(mediaToTest) {
 function createHtmlMediaPhotograph(media) {
   // eslint-disable-next-line eqeqeq
   if (media.photographerId == actualPhotographerId) {
-    arrayOfMedias.push({
-      id: media.id,
-      likes: media.likes,
-      description: media.description,
-      date: media.date,
-    });
-
     return `
   <article class="media-photograph" data-id="${media.id}" data-date="${media.date}" data-liked="false">
     <div class="media-photograph__cadre">
@@ -151,11 +160,11 @@ function openLightbox() {
 // _________________________________________________________________________________________________
 
 // F14
-function lightboxmediaTagFactory(media, src) {
+function lightboxmediaTagFactory(type, src) {
   const lightboxImage = document.querySelector('.lightbox__media--image');
   const lightboxVideo = document.querySelector('.lightbox__media--video');
 
-  if (media.tagName === 'IMG') {
+  if (type === 'img') {
     lightboxImage.style.display = 'block';
     lightboxImage.setAttribute('src', src);
     lightboxVideo.style.display = 'none';
@@ -169,13 +178,17 @@ function lightboxmediaTagFactory(media, src) {
 // F15
 function displaySelectedImage(idOfImage) {
   const lightbox = document.querySelector('.lightbox');
-  const mediaPhotographSelected = document.querySelector(`[data-id='${idOfImage}']`);
-  const mediaSelected = mediaPhotographSelected.querySelector('.media-photograph__media');
-  const srcAttribute = mediaSelected.getAttribute('src');
+  // eslint-disable-next-line eqeqeq
+  const positionInArray = arrayOfMedias.findIndex((media) => media.id == idOfImage);
+  const srcOfMedia = arrayOfMedias[positionInArray].src;
+  const typeOfMedia = arrayOfMedias[positionInArray].type;
+  const descriptionOfMedia = arrayOfMedias[positionInArray].description;
+
+  lightbox.querySelector('.lightbox__description').textContent = descriptionOfMedia;
 
   lightbox.setAttribute('data-id', idOfImage);
 
-  lightboxmediaTagFactory(mediaSelected, srcAttribute);
+  lightboxmediaTagFactory(typeOfMedia, srcOfMedia);
 }
 
 // F16
