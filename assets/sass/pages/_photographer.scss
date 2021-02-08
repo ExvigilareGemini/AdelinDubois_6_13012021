@@ -35,7 +35,6 @@
       color: map-get($map: $colors, $key: secondary-font-red);
     }
     &__slogan {
-      font-size: map-get($map: $font-size, $key: mobile-small);
       color: map-get($map: $colors, $key: secondary-font-black);
     }
   }
@@ -52,6 +51,7 @@
   }
   &__image {
     @include image;
+    border-radius: 100%;
   }
   &__button {
     position: fixed;

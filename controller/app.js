@@ -23,8 +23,8 @@ function photographHTMLGenerator(objectPhotograph) {
   <article id="${objectPhotograph.id}" class="photograph">
       <!-- IMAGE LINK -->
       <div class="photograph__cadre">
-          <a href="./vue/photographer.html?id=${objectPhotograph.id}" class="photograph__link"></a>
-          <img src="./assets/src/Sample_Photos/Photographers_ID_Photos/${objectPhotograph.portrait}" alt="" class="photograph__image">
+          <a href="./vue/photographer.html?id=${objectPhotograph.id}" class="photograph__link" role="link" aria-label="${objectPhotograph.name}"></a>
+          <img src="./assets/src/Sample_Photos/Photographers_ID_Photos/${objectPhotograph.portrait}" alt="${objectPhotograph.name}" class="photograph__image">
       </div>
       <!-- NAME -->
       <h2 class="photograph__name">${objectPhotograph.name}</h2>
@@ -35,7 +35,7 @@ function photographHTMLGenerator(objectPhotograph) {
       <!-- TAGS -->
       <ul class="tag" aria-label="photographer categories">
       ${objectPhotograph.tags.map((tagPhotograph) => `
-      <li onclick="sortingByTag('${tagPhotograph}')" data-isChecked="" data-tagName="${tagPhotograph}" class="tag__link tag__link--smaller">#${tagPhotograph}</li>`).join('')
+      <button type="button" tabindex="0" aria-label="tag" onclick="sortingByTag('${tagPhotograph}')" data-isChecked="" data-tagName="${tagPhotograph}" class="tag__link tag__link--smaller">#${tagPhotograph}</button>`).join('')
 }
       </ul>
   </article>`;

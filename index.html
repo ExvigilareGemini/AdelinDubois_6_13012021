@@ -11,26 +11,26 @@
 <body class="body">
 
     <!-- ANCHOR -->
-    <a href="#main" class="anchor">Passer au contenu</a>
+           <a href="#main" class="anchor">Passer au contenu</a>
 
     <!-- HEADER -->
-    <header class="header">
+    <header class="header" role="banner">
         <!-- LOGO -->
-        <div class="header__imagelink">
-            <a href="index.html" class="header__imagelink__link"></a>
-            <img src="./assets/src/FishEye_Logo.png" alt="Fisheye home page" class="header__imagelink__image">
-        </div>
+        <a href="./index.html" class="header__imagelink" aria-label="Fisheye home page">
+            <img src="./assets/src/FishEye_Logo.png" alt="Fisheye home page" class="header__imagelink__image" >
+        </a>
+            
         <!-- TAGS -->
-        <ul class="tag tag--header" aria-label="photographer categories">
-           <li onclick="sortingByTag('portrait')" data-isChecked="false" data-tagName="portrait" class="tag__link">#Portrait</li>      
-           <li onclick="sortingByTag('art')" data-isChecked="false" data-tagName="art" class="tag__link">#Art</li>           
-           <li onclick="sortingByTag('fashion')" data-isChecked="false" data-tagName="fashion" class="tag__link">#Fashion</li>       
-           <li onclick="sortingByTag('architecture')" data-isChecked="false" data-tagName="architecture" class="tag__link">#Architecture</li>  
-           <li onclick="sortingByTag('travel')" data-isChecked="false" data-tagName="travel" class="tag__link">#Travel</li>        
-           <li onclick="sortingByTag('sports')" data-isChecked="false" data-tagName="sports" class="tag__link">#Sport</li>         
-           <li onclick="sortingByTag('animals')" data-isChecked="false" data-tagName="animals" class="tag__link">#Animals</li>       
-           <li onclick="sortingByTag('events')" data-isChecked="false" data-tagName="events" class="tag__link">#Events</li>        
-        </ul>
+        <nav class="tag tag--header"  aria-label="photographer categories" role="navigation">
+            <button type="button" tabindex="0" aria-label="tag Portrait" onclick="sortingByTag('portrait')" data-isChecked="false" data-tagName="portrait" class="tag__link">#Portrait</button>      
+            <button type="button" tabindex="0" aria-label="tag Art" onclick="sortingByTag('art')" data-isChecked="false" data-tagName="art" class="tag__link">#Art</button>           
+            <button type="button" tabindex="0" aria-label="tag Fashion" onclick="sortingByTag('fashion')" data-isChecked="false" data-tagName="fashion" class="tag__link">#Fashion</button>       
+            <button type="button" tabindex="0" aria-label="tag Architecture" onclick="sortingByTag('architecture')" data-isChecked="false" data-tagName="architecture" class="tag__link">#Architecture</button>  
+            <button type="button" tabindex="0" aria-label="tag Travel" onclick="sortingByTag('travel')" data-isChecked="false" data-tagName="travel" class="tag__link">#Travel</button>        
+            <button type="button" tabindex="0" aria-label="tag Sport" onclick="sortingByTag('sports')" data-isChecked="false" data-tagName="sports" class="tag__link">#Sport</button>         
+            <button type="button" tabindex="0" aria-label="tag Animals" onclick="sortingByTag('animals')" data-isChecked="false" data-tagName="animals" class="tag__link">#Animals</button>       
+            <button type="button" tabindex="0" aria-label="tag Events" onclick="sortingByTag('events')" data-isChecked="false" data-tagName="events" class="tag__link">#Events</button>     
+        </nav>
     </header>
 
     <!-- MAIN -->

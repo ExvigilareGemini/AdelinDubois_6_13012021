@@ -17,6 +17,7 @@
   }
   &__image {
     @include image;
+    border-radius: 100%;
   }
   &__link {
     position: absolute;
@@ -35,12 +36,11 @@
     // Slogan of photographer
     &:nth-of-type(2) {
       color: map-get($map: $colors, $key: secondary-font-black);
-      font-size: map-get($map: $font-size, $key: mobile-small);
+
     }
     // Pric ofe photographer
     &:nth-of-type(3) {
-      color: lighten(map-get($map: $colors, $key: secondary-font-black), 30%);
-      font-size: map-get($map: $font-size, $key: mobile-small);
+      color: lighten(map-get($map: $colors, $key: secondary-font-black), 10%);
     }
   }
 

@@ -12,14 +12,14 @@
     background-color: map-get($map: $colors, $key: background-modal);
     @include desktop-format-photographer {
         max-width: 600px;
-        max-height: 750px;
+        max-height: 800px;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
     }
     &__title {
         flex-grow: 1;
-        max-width: 75vw;
+        max-width: 85%;
         margin: 5% 0 5% 5%;
         font-size: map-get($map: $font-size, $key: mobile-extra);
         color: black;

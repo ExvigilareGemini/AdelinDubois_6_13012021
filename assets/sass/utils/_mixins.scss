@@ -1,5 +1,4 @@
 @mixin cadre($height: 100%, $width: 100%) {
-  overflow: hidden;
   height: $height;
   width: $width;
 }

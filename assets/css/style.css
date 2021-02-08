@@ -30,7 +30,6 @@ a {
   }
 }
 .photograph__cadre {
-  overflow: hidden;
   height: 50vw;
   width: 50vw;
   position: relative;
@@ -38,7 +37,6 @@ a {
 }
 @media screen and (min-width: 670px) {
   .photograph__cadre {
-    overflow: hidden;
     height: 18vw;
     width: 18vw;
   }
@@ -47,6 +45,7 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 100%;
 }
 .photograph__link {
   position: absolute;
@@ -64,11 +63,9 @@ a {
 }
 .photograph__textparagraph:nth-of-type(2) {
   color: #525252;
-  font-size: 10px;
 }
 .photograph__textparagraph:nth-of-type(3) {
-  color: #9f9f9f;
-  font-size: 10px;
+  color: #6c6c6c;
 }
 
 .tag {
@@ -96,6 +93,7 @@ a {
   text-decoration: none;
   font-weight: bold;
   border: solid 1px #ebebeb;
+  background-color: white;
   border-radius: 25px;
   padding: 3px 8px;
   margin: 3px 3px;
@@ -154,7 +152,6 @@ a {
   }
 }
 .media-photograph__cadre {
-  overflow: hidden;
   height: 50vw;
   width: 90vw;
   border-radius: 5px;
@@ -162,7 +159,6 @@ a {
 }
 @media screen and (min-width: 640px) {
   .media-photograph__cadre {
-    overflow: hidden;
     height: 25vw;
     width: 25vw;
   }
@@ -282,34 +278,22 @@ a {
 }
 .header__imagelink {
   position: relative;
-  width: 100%;
+  width: fit-content;
   margin: 30px 0 30px 25px;
 }
 @media screen and (min-width: 670px) {
   .header__imagelink {
     margin-left: 50px;
-    width: fit-content;
-  }
-}
-.header__imagelink__link {
-  display: block;
-  position: absolute;
-  width: 40%;
-  height: 100%;
-}
-@media screen and (min-width: 670px) {
-  .header__imagelink__link {
-    width: 100%;
   }
 }
 .header__imagelink__image {
-  width: 40%;
+  width: 100%;
   max-width: 300px;
 }
-@media screen and (min-width: 670px) {
-  .header__imagelink__image {
-    width: 100%;
-  }
+.header__nav {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
 }
 
 .contact-modal {
@@ -328,7 +312,7 @@ a {
 @media screen and (min-width: 640px) {
   .contact-modal {
     max-width: 600px;
-    max-height: 750px;
+    max-height: 800px;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -336,7 +320,7 @@ a {
 }
 .contact-modal__title {
   flex-grow: 1;
-  max-width: 75vw;
+  max-width: 85%;
   margin: 5% 0 5% 5%;
   font-size: 33px;
   color: black;
@@ -524,18 +508,15 @@ a {
   color: #901c1c;
 }
 .description-photographer__text__slogan {
-  font-size: 10px;
   color: #525252;
 }
 .description-photographer__cadre {
-  overflow: hidden;
   height: 12vh;
   width: 12vh;
   border-radius: 100%;
 }
 @media screen and (min-width: 640px) {
   .description-photographer__cadre {
-    overflow: hidden;
     height: 10em;
     width: 10em;
     position: absolute;
@@ -547,6 +528,7 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 100%;
 }
 .description-photographer__button {
   position: fixed;

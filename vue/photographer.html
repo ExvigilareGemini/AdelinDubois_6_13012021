@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FishEye</title>
+    <title class="title">FishEye</title>
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
@@ -12,15 +12,14 @@
 <body class="body">
 
     <!-- HEADER -->
-    <header class="header">
+    <header class="header" aria-hidden="false">
         <!-- LOGO -->
-        <div class="header__imagelink">
-            <a href="../index.html" class="header__imagelink__link"></a>
-            <img src="../assets/src/FishEye_Logo.png" alt="Fisheye home page" class="header__imagelink__image">
-        </div>
+        <a href="../index.html" class="header__imagelink" aria-label="Fisheye home page">
+            <img src="../assets/src/FishEye_Logo.png" alt="Fisheye home page" class="header__imagelink__image" >
+        </a>
     </header>
     
-    <main class="main">
+    <main class="main" aria-hidden="false">
         <!-- INFORMATION ABOUT PHOTOGRAPHER -->
         <section class="description-photographer"></section>
 
@@ -46,33 +45,79 @@
         </div>    
 
         <!-- LIGHTBOX -->
-        <div class="lightbox">
-            <i class="fas fa-times lightbox__cross" onclick="closeLightbox()"></i>
+        <div class="lightbox" aria-label="image closeup view">
+            <i tabindex="0" class="fas fa-times lightbox__cross" onclick="closeLightbox()" aria-label="Close dialog"></i>
             <div class="lightbox__media-description-container">
-                <img src="" alt="" class="lightbox__media lightbox__media--image">
-                <video src="" class="lightbox__media lightbox__media--video" controls></video>
+                <img tabindex="0" src="" alt="" class="lightbox__media lightbox__media--image">
+                <video tabindex="0" src="" class="lightbox__media lightbox__media--video" controls></video>
                 <p class="lightbox__description"></p>
             </div>
-            <a class="fas fa-chevron-left lightbox__previous" onclick="showAdjacentImageLightbox(-1)"></a>
-            <a class="fas fa-chevron-right lightbox__next" onclick="showAdjacentImageLightbox(1)"></a>
+            <a tabindex="0" class="fas fa-chevron-left lightbox__previous" onclick="showAdjacentImageLightbox(-1)" aria-label="Previous image"></a>
+            <a tabindex="0" class="fas fa-chevron-right lightbox__next" onclick="showAdjacentImageLightbox(1)" aria-label="Next image"></a>
         </div>
 
     </main>
 
     <!-- MODAL -->
-    <article class="modal">
+    <article class="modal" aria-hidden="true" role="dialog" aria-describedby="ModalTitle">
         <form action="" class="contact-modal">
-            <h2 class="contact-modal__title"></h2>
-            <i class="fas fa-times contact-modal__cross" onclick="closeModal()"></i>
-            <label for="firstname" class="contact-modal__label">Prénom</label>
-            <input type="text" class="contact-modal__input" id="firstname" required>
-            <label for="lastname" class="contact-modal__label">Nom</label>
-            <input type="text" class="contact-modal__input" id="lastname" required>
-            <label for="email" class="contact-modal__label">Email</label>
-            <input type="email" class="contact-modal__input" id="email" required>
-            <label for="message" class="contact-modal__label">Votre message</label>
-            <textarea type="textarea" class="contact-modal__input contact-modal__input--textarea" id="message" required></textarea>
-            <input type="submit" value="Envoyer" class="contact-modal__button button">
+            <h2 
+            id="ModalTitle" 
+            class="contact-modal__title"
+            >Contactez-moi</h2>
+            <i tabindex="0" 
+                class="fas fa-times contact-modal__cross" 
+                aria-label="Close contact form" 
+                onclick="closeModal()"></i>
+            <label 
+                for="firstname" 
+                id="firstname" 
+                class="contact-modal__label"
+                >Prénom</label>
+            <input 
+                type="text" 
+                class="contact-modal__input" 
+                id="firstname" 
+                aria-labelledby="firstname" 
+                required>
+            <label 
+                for="lastname" 
+                id="lastname" 
+                class="contact-modal__label"
+                >Nom</label>
+            <input 
+                type="text" 
+                class="contact-modal__input" 
+                id="lastname" 
+                aria-labelledby="lastname" 
+                required>
+            <label 
+                for="email" 
+                id="email" 
+                class="contact-modal__label"
+                >Email</label>
+            <input 
+                type="email" 
+                class="contact-modal__input" 
+                id="email" 
+                aria-labelledby="email" 
+                required>
+            <label 
+                for="message" 
+                id="message" 
+                class="contact-modal__label"
+                >Votre message</label>
+            <textarea 
+                type="textarea" 
+                class="contact-modal__input contact-modal__input--textarea" 
+                id="message" 
+                aria-labelledby="message" 
+                required></textarea>
+            <input 
+                type="submit" 
+                value="Envoyer" 
+                class="contact-modal__button button" 
+                aria-label="send">
         </form>
     </article>
     

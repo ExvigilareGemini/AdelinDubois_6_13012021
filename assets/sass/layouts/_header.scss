@@ -7,29 +7,22 @@
   }
   &__imagelink {
     position: relative;
-    width: 100%;
+    width: fit-content;
     margin: map-get($map: $margin, $key: mobile-vertical) 0
       map-get($map: $margin, $key: mobile-vertical)
       map-get($map: $margin, $key: mobile-horizon);
     @include desktop_format {
       margin-left: map-get($map: $margin, $key: desktop-horizon);
-      width: fit-content;
-    }
-    &__link {
-      display: block;
-      position: absolute;
-      width: 40%;
-      height: 100%;
-      @include desktop_format {
-        width: 100%;
-      }
+      
     }
     &__image {
-      width: 40%;
+      width: 100%;
       max-width: 300px;
-      @include desktop_format {
-        width: 100%;
-      }
     }
+  }
+  &__nav {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
   }
 }
