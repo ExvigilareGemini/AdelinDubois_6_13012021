@@ -67,9 +67,7 @@ function createHtmlMediaPhotograph(media) {
   if (media.photographerId == actualPhotographerId) {
     return `
   <article class="media-photograph" data-id="${media.id}" data-date="${media.date}" data-liked="false">
-    <div class="media-photograph__cadre">
-        ${mediaTagFactory(media)}
-    </div>
+    ${mediaTagFactory(media)}
     <div class="media-photograph__text-container">
         <p class="media-photograph__description">${media.description}</p>
         <p class="media-photograph__price">${media.price}€</p>

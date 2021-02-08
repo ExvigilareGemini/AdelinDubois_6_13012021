@@ -7,16 +7,14 @@
     width: 25vw;
     margin: 10px 0;
   }
-  &__cadre {
-    @include cadre(50vw, 90vw);
+  &__media {
+    @include image(50vw, 90vw);
     border-radius: 5px;
     cursor: pointer;
     @include desktop_format-photographer {
-      @include cadre(25vw, 25vw);
+      height: 25vw;
+      width: 25vw;
     }
-  }
-  &__media {
-    @include image;
   }
   &__text-container {
     @include TextEllipsis;

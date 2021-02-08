@@ -24,8 +24,7 @@
     &__title {
       font-size: map-get($map: $font-size, $key: mobile-big);
       color: map-get($map: $colors, $key: secondary);
-      margin-top: 15px;
-      margin-bottom: 0;
+      margin: 0 map-get($map: $margin, $key: mobile-horizon) 0 0;
       @include desktop_format-photographer {
         font-size: map-get($map: $font-size, $key: mobile-extra);
       }
@@ -38,20 +37,16 @@
       color: map-get($map: $colors, $key: secondary-font-black);
     }
   }
-
-  &__cadre {
-    @include cadre(12vh, 12vh);
+  &__image {
+    @include image(18vw, 18vw);
     border-radius: 100%;
     @include desktop_format-photographer {
-      @include cadre(10em, 10em);
+      height: 10em;
+      width: 10em;
       position: absolute;
       right: 5%;
-      border-radius: 100%;
+      top: 10%;
     }
-  }
-  &__image {
-    @include image;
-    border-radius: 100%;
   }
   &__button {
     position: fixed;
@@ -65,7 +60,7 @@
       position: unset;
       width: 145px;
       height: 50px;
-      margin: map-get($map: $margin, $key: mobile-vertical) 0 0 map-get($map: $margin, $key: mobile-horizon) ;
+      margin: 15px 140px 0 0 ;
       font-size: map-get($map: $font-size, $key: mobile);
       
     }
@@ -76,6 +71,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  width: fit-content;
   @include desktop_format-photographer {
     margin: 0 map-get($map: $margin, $key: desktop-horizon);
   }

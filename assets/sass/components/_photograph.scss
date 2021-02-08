@@ -7,28 +7,26 @@
     min-width: 30%;
     max-width: 35%;
   }
-  &__cadre {
-    @include cadre(50vw, 50vw);
-    position: relative;
+   &__link {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+    width: fit-content;
+    height: 100%;
+    z-index: 10;
+  } 
+  &__image {
+    @include image(50vw, 50vw);
     border-radius: 100%;
     @include desktop_format{
-      @include cadre(18vw, 18vw);
+      @include image(18vw, 18vw);
     }
-  }
-  &__image {
-    @include image;
-    border-radius: 100%;
-  }
-  &__link {
-    position: absolute;
-    width: 100%;
-    height: 115%;
-    z-index: 10;
   }
   &__name {
     font-size: map-get($map: $font-size, $key: mobile-big);
     color: map-get($map: $colors, $key: secondary);
     margin-bottom: 5px;
+    width: fit-content;
   }
   // Localisation of photographer
   &__textparagraph {

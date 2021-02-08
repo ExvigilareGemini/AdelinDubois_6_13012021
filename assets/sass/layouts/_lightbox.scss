@@ -10,15 +10,15 @@
   top: 0;
   left: 0;
   &__cross {
+    @include gridColRow(3,1);
     font-size: map-get($map: $font-size, $key: mobile-big);
     cursor: pointer;
-    @include gridColRow(3,1);
-    height: 30px;
-    padding: 5px 10px;
+    height: fit-content;
+    padding: 10px 15px;
     justify-self: center;
     align-self: center;
     @include desktop-format-photographer {
-      padding-top: 30%;
+      margin-top: 30%;
       align-self: flex-start;
     }
   }

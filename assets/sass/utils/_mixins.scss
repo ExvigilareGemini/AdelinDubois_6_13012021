@@ -1,11 +1,6 @@
-@mixin cadre($height: 100%, $width: 100%) {
+@mixin image($height, $width) {
   height: $height;
   width: $width;
-}
-
-@mixin image() {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
 }
 

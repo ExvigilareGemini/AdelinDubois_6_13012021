@@ -22,12 +22,15 @@ function photographHTMLGenerator(objectPhotograph) {
   return `
   <article id="${objectPhotograph.id}" class="photograph">
       <!-- IMAGE LINK -->
-      <div class="photograph__cadre">
-          <a href="./vue/photographer.html?id=${objectPhotograph.id}" class="photograph__link" role="link" aria-label="${objectPhotograph.name}"></a>
-          <img src="./assets/src/Sample_Photos/Photographers_ID_Photos/${objectPhotograph.portrait}" alt="${objectPhotograph.name}" class="photograph__image">
-      </div>
-      <!-- NAME -->
-      <h2 class="photograph__name">${objectPhotograph.name}</h2>
+
+          <a href="./vue/photographer.html?id=${objectPhotograph.id}" class="photograph__link" role="link" aria-label="${objectPhotograph.name}">
+            <img src="./assets/src/Sample_Photos/Photographers_ID_Photos/${objectPhotograph.portrait}" alt="${objectPhotograph.name}" class="photograph__image">
+            <!-- NAME -->
+            <h2 class="photograph__name">${objectPhotograph.name}</h2>
+          </a>
+          
+
+      
       <!-- TEXT PARAGRAPH -->
       <p class="photograph__textparagraph">${objectPhotograph.city}, ${objectPhotograph.country}</p>
       <p class="photograph__textparagraph">${objectPhotograph.tagline}</p>

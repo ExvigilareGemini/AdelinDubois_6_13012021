@@ -8,6 +8,7 @@
   &__imagelink {
     position: relative;
     width: fit-content;
+    max-width: 40%;
     margin: map-get($map: $margin, $key: mobile-vertical) 0
       map-get($map: $margin, $key: mobile-vertical)
       map-get($map: $margin, $key: mobile-horizon);
