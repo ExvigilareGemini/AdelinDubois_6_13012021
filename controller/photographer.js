@@ -3,6 +3,8 @@ let ActualPhotographerName = '';
 const arrayOfMedias = [];
 const mainHTML = document.querySelector('.main');
 const headerHTML = document.querySelector('.header');
+
+const tabindexval = 4;
 // _________________________________________________________________________________________________
 // _________________________________________________________________________________________________
 // _________________________________________________________________________________________________
@@ -22,13 +24,13 @@ function createHtmlDescriptionPhotographer(actualPhotographer) {
           <p class="description-photographer__text__localisation">${actualPhotographer.city}, ${actualPhotographer.country}</p>
           <p class="description-photographer__text__slogan">${actualPhotographer.tagline}</p>
         </div>
-        <button class="description-photographer__button button" onclick="openModal()" type="button" aria-label="Contact me">Contactez-moi</button>
+        <button tabindex="2" class="description-photographer__button button" onclick="openModal()" type="button" aria-label="Contact me">Contactez-moi</button>
         <div class="description-photographer__cadre">
           <img src="../assets/src/Sample_Photos/Photographers_ID_Photos/${actualPhotographer.portrait}" alt="${actualPhotographer.name}" class="description-photographer__image">
         </div>
         <nav class="tag tag--left" aria-label="photographer categories">
         ${actualPhotographer.tags.map((tagPhotograph) => `
-        <a href="../index.html?tagname=${tagPhotograph}" aria-label="tag ${tagPhotograph}" class="tag__link tag__link--smaller">#${tagPhotograph}</a>`).join('')
+        <a tabindex="3" href="../index.html?tagname=${tagPhotograph}" aria-label="tag ${tagPhotograph}" class="tag__link tag__link--smaller">#${tagPhotograph}</a>`).join('')
 }
         </nav>
         `;
@@ -275,8 +277,8 @@ function sortAndDisplay(propertyName) {
   arrayOfMedias.sort((a, b) => ((a[propertyName] > b[propertyName]) ? 1 : -1));
   arrayOfMedias.forEach((el) => {
     const mediaSortAndDisplay = document.querySelector(`[data-id='${el.id}']`);
-    mediaSortAndDisplay.querySelector('.media-photograph__media').setAttribute('tabindex', orderPosition);
-    mediaSortAndDisplay.querySelector('.media-photograph__icon').setAttribute('tabindex', orderPosition);
+    mediaSortAndDisplay.querySelector('.media-photograph__media').setAttribute('tabindex', orderPosition + tabindexval);
+    mediaSortAndDisplay.querySelector('.media-photograph__icon').setAttribute('tabindex', orderPosition + tabindexval);
     mediaSortAndDisplay.style.order = orderPosition;
     orderPosition += 1;
   });
