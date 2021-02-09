@@ -1,6 +1,11 @@
-const actualTagsChecked = [];
+// _________________________________________________________________________________________________
+// _________________________________________________________________________________________________
+// _________________________________________________________________________________________________
+// EVENTS
 
-window.onscroll = function () {
+// E01
+// when page is scrolled, check the Y position, if 0 the .anchor is not visible, else it's visible
+document.onscroll = function () {
   if (window.pageYOffset === 0) {
     document.querySelector('.anchor').style.opacity = '0';
   } else {
@@ -11,83 +16,24 @@ window.onscroll = function () {
 // _________________________________________________________________________________________________
 // _________________________________________________________________________________________________
 // _________________________________________________________________________________________________
-// DYNAMIC CREATION OF HTML BASED ON JSON DATAS. SEQUENCE OF EXECUTION : F04 -> F03 -> F02 -> F01
-
-// F01
-// function using template string to generate HTML, creating the photograph part of the home page
-// the argument is an object coming from the json taht include photographers datas
-// object.data is used to insert photographers information in the created HTML
-// before the <li... looping creation of tags, permit to adapt the numbers of each by photographers
-function photographHTMLGenerator(objectPhotograph) {
-  return `
-  <article id="${objectPhotograph.id}" class="photograph">
-      <!-- IMAGE LINK -->
-
-          <a href="./vue/photographer.html?id=${objectPhotograph.id}" class="photograph__link" role="link" aria-label="${objectPhotograph.name}">
-            <img src="./assets/src/Sample_Photos/Photographers_ID_Photos/${objectPhotograph.portrait}" alt="${objectPhotograph.name}" class="photograph__image">
-            <!-- NAME -->
-            <h2 class="photograph__name">${objectPhotograph.name}</h2>
-          </a>
-          
-
-      
-      <!-- TEXT PARAGRAPH -->
-      <p class="photograph__textparagraph">${objectPhotograph.city}, ${objectPhotograph.country}</p>
-      <p class="photograph__textparagraph">${objectPhotograph.tagline}</p>
-      <p class="photograph__textparagraph">${objectPhotograph.price}€/jour</p>
-      <!-- TAGS -->
-      <ul class="tag" aria-label="photographer categories">
-      ${objectPhotograph.tags.map((tagPhotograph) => `
-      <button type="button" tabindex="0" aria-label="tag" onclick="sortingByTag('${tagPhotograph}')" data-isChecked="" data-tagName="${tagPhotograph}" class="tag__link tag__link--smaller">#${tagPhotograph}</button>`).join('')
-}
-      </ul>
-  </article>`;
-}
-
-// F02
-// function that create all the block of HTML that is needed to be displayed
-// argument is an array, it comes from the JSON and contains photographers datas (see F03)
-// taking array of JSON, trasnform it in a new array by applying the F01 function to each (.map)
-function photographHTMLCompiler(arrayOfJson) {
-  return arrayOfJson.map(photographHTMLGenerator).join('');
-}
-
-// F03
-// function applying F02 to the photographer's container
-// argument is the array coming from JSON passing to F02
-function photographCreator(data) {
-  document.querySelector('.photograph-container').insertAdjacentHTML('afterbegin', photographHTMLCompiler(data.photographers));
-  isRedirectFromPhotographerPages();
-}
-
-// F04
-// function that get datas in the /src/data.json and chain with .then
-// the respons is tranform into json, then the datas received are passed to F03
-function fetchDataToCreatePhotographersHTML() {
-  fetch('./controller/src/data.json')
-    .then((resp) => resp.json())
-    .then((data) => photographCreator(data))
-    .catch((error) => console.log(`Erreur : ${error}`));
-}
-
-// _________________________________________________________________________________________________
-// _________________________________________________________________________________________________
-// _________________________________________________________________________________________________
 // DYNAMIC MODIFICATION WITH TAGS CLICK IN HTML -> CALL F08 | F05-6-7 IS USED FOR F08
 
-// F05
-// function modifying data-attribute isChecked to tags in all the dom, making him
-// visually checked. Argument tagname is the data-attribute tagname of the tag
-// TrueOrFalse is a string -> 'true' the tag is checked, 'false is unchecked
+// F01
+// select each tags with data-tagName=tagName (argument) and set data-isCheked to true or false
+// depending from TrueOrFalse argument
+// argument: tagName to search, TrueOrFalse is value for date-isChecked
+// called in F04
 function setDataCheckedAttributeOfTag(tagName, TrueOrFalse) {
   const tagDOMS = document.querySelectorAll(`[data-tagName="${tagName}"]`);
   tagDOMS.forEach((element) => element.setAttribute('data-isChecked', TrueOrFalse));
 }
 
-// F06
-// compare two arrays, one contain all tags checked, the other contain list of li if at least
+// F02
+// compare two arrays, one contain all tags checked, the other contain list of li, if at least
 // one data-tagname attribute of li correspond to a tag checked, return true, else return false
-function isTagCorrespondToTagsChecked(arrayToCompare) {
+// arguments: actualTagsChecked[] & listOfArticlesLi[], arrays to compare from F03 (displayingArticles)
+// called in F03 (displayingArticles)
+function isTagCorrespondToTagsChecked(actualTagsChecked, arrayToCompare) {
   let TrueOrFalse = false;
   actualTagsChecked.forEach((element1) => arrayToCompare.forEach((element2) => {
     if (element1 === element2.getAttribute('data-tagname')) {
@@ -97,18 +43,19 @@ function isTagCorrespondToTagsChecked(arrayToCompare) {
   return TrueOrFalse;
 }
 
-// F07
+// F03
 // get all articles .photograph, then get each li .tag of each articles and compared them to
 // tags that are actually checked with F06. Display 'none' for articles that don't contains
 // at least one tag checked
-function displayingArticles() {
+// argument: actualeTagsChecked[] from F04 (sortingByTag)
+function displayingArticles(actualTagsChecked) {
   // 1 select all article .photograph
   const articlesAllDOM = document.querySelectorAll('.photograph');
   articlesAllDOM.forEach((article) => {
     // 2 for each, I select each li that it contain
-    const lisOfArticle = article.querySelectorAll('.tag__link--smaller');
+    const listOfArticlesLi = article.querySelectorAll('.tag__link--smaller');
     // 3 making comparision + displaying
-    if (actualTagsChecked.length === 0 || isTagCorrespondToTagsChecked(lisOfArticle)) {
+    if (actualTagsChecked.length === 0 || isTagCorrespondToTagsChecked(actualTagsChecked, listOfArticlesLi)) {
       article.style.display = 'flex';
     } else {
       article.style.display = 'none';
@@ -116,12 +63,17 @@ function displayingArticles() {
   });
 }
 
-// F08
-// receiving the calling from onclick in HTML li .tags, argument is the tagname of the li
-// then check if tag is already checked, it add/delete the tagname to actualTagsChecked[] used
-// in F06&F07, then call F05 to change checked status in HTML. Finally call F07 to display articles
+// F04
+// when clicking on a tag, this chack if it is already checked, if not it add the tag name to
+// actualTagsCheked[] and check the tag with data-isCheked. If it's actually checked, it remove
+// the tagname form actualTagsCheked[] and uncheck the tag.
+// Then it calls F03 (displayArticles) and pass him actualTagsChecked[]
+// argument: tagName, name of the selected tag
+// called in html, onclick with tag and in F07 (isRedirectFromPhotographerPage)
 function sortingByTag(tagName) {
   const tagDOM = document.querySelector(`[data-tagName="${tagName}"]`);
+  const actualTagsChecked = [];
+
   if (tagDOM.getAttribute('data-isChecked') === 'true') {
     const pos = actualTagsChecked.indexOf(tagName);
     actualTagsChecked.splice(pos, 1);
@@ -131,14 +83,75 @@ function sortingByTag(tagName) {
     setDataCheckedAttributeOfTag(tagName, 'true');
   }
 
-  displayingArticles();
+  displayingArticles(actualTagsChecked);
 }
 
-// F09
-function isRedirectFromPhotographerPages() {
+// _________________________________________________________________________________________________
+// _________________________________________________________________________________________________
+// _________________________________________________________________________________________________
+// DYNAMIC CREATION OF HTML BASED ON DATA.JSON. SEQUENCE OF EXECUTION : F09 -> F08 -> F06/F07 -> F05
+
+// F05
+// generate html content of 1 photographer displayed (.photograph) using template strings and
+// populate with objectphotographer
+// argument: object photographer from data.json
+function photographHTMLGenerator(objectPhotographer) {
+  return `
+  <article id="${objectPhotographer.id}" class="photograph">
+      <!-- IMAGE LINK -->
+          <a href="./vue/photographer.html?id=${objectPhotographer.id}" class="photograph__link" role="link" aria-label="${objectPhotographer.name}">
+            <img src="./assets/src/Sample_Photos/Photographers_ID_Photos/${objectPhotographer.portrait}" alt="${objectPhotographer.name}" class="photograph__image">
+            <!-- NAME -->
+            <h2 class="photograph__name">${objectPhotographer.name}</h2>
+          </a>
+      <!-- TEXT PARAGRAPH -->
+      <p class="photograph__textparagraph">${objectPhotographer.city}, ${objectPhotographer.country}</p>
+      <p class="photograph__textparagraph">${objectPhotographer.tagline}</p>
+      <p class="photograph__textparagraph">${objectPhotographer.price}€/jour</p>
+      <!-- TAGS -->
+      <ul class="tag" aria-label="photographer categories">
+      ${objectPhotographer.tags.map((tagPhotograph) => `
+      <button type="button" tabindex="0" aria-label="tag" onclick="sortingByTag('${tagPhotograph}')" data-isChecked="" data-tagName="${tagPhotograph}" class="tag__link tag__link--smaller">#${tagPhotograph}</button>`).join('')
+}
+      </ul>
+  </article>`;
+}
+
+// F06
+// function that create all the block of HTML that is needed to be displayed,
+// takes data and create a new array using .map and F05 (photographHTMLGenerator)
+// argument: datas from JSON
+function photographHTMLCompiler(data) {
+  return data.map(photographHTMLGenerator).join('');
+}
+
+// F07
+// check in url if index.html have been called by a tag in photographer page, if yes,
+// get the tagname in url and sort the page with F04 (sortingByTag)
+function isRedirectFromPhotographerPage() {
   const url = new URL(document.location.href);
   const isTagInUrl = url.searchParams.get('tagname');
   if (isTagInUrl !== null) {
     sortingByTag(isTagInUrl);
   }
+}
+
+// F08
+// function inserting HTML create in F06 (photographHTMLCompiler),
+// then call F07 (isRedirectFromPhotographerPage)
+// argument: is datas form JSON passing to F09 (fetchDataToCreateIndexHTML)
+function insertCreatedHTMLinHTML(data) {
+  document.querySelector('.photograph-container').insertAdjacentHTML('afterbegin', photographHTMLCompiler(data.photographers));
+  isRedirectFromPhotographerPage();
+}
+
+// F09
+// function that get datas in the /src/data.json and chain with .then
+// the response is tranform into json and call F08
+// called in index.html
+function fetchDataToCreateIndexHTML() {
+  fetch('./controller/src/data.json')
+    .then((resp) => resp.json())
+    .then((data) => insertCreatedHTMLinHTML(data))
+    .catch((error) => console.log(`Erreur : ${error}`));
 }

@@ -46,7 +46,7 @@
 
         <!-- LIGHTBOX -->
         <div class="lightbox" aria-label="image closeup view">
-            <i tabindex="0" class="fas fa-times lightbox__cross" onclick="closeLightbox()" aria-label="Close dialog"></i>
+            <i tabindex="0" class="fas fa-times lightbox__cross" onclick="closeLightbox()" role="img" aria-label="Close dialog" ></i>
             <div class="lightbox__media-description-container">
                 <img tabindex="0" src="" alt="" class="lightbox__media lightbox__media--image">
                 <video tabindex="0" src="" class="lightbox__media lightbox__media--video" controls></video>
@@ -71,47 +71,47 @@
                 onclick="closeModal()"></i>
             <label 
                 for="firstname" 
-                id="firstname" 
+                id="firstname-label" 
                 class="contact-modal__label"
                 >Prénom</label>
             <input 
                 type="text" 
                 class="contact-modal__input" 
                 id="firstname" 
-                aria-labelledby="firstname" 
+                aria-labelledby="firstname-label" 
                 required>
             <label 
                 for="lastname" 
-                id="lastname" 
+                id="lastname-label" 
                 class="contact-modal__label"
                 >Nom</label>
             <input 
                 type="text" 
                 class="contact-modal__input" 
                 id="lastname" 
-                aria-labelledby="lastname" 
+                aria-labelledby="lastname-label" 
                 required>
             <label 
                 for="email" 
-                id="email" 
+                id="email-label" 
                 class="contact-modal__label"
                 >Email</label>
             <input 
                 type="email" 
                 class="contact-modal__input" 
                 id="email" 
-                aria-labelledby="email" 
+                aria-labelledby="email-label" 
                 required>
             <label 
                 for="message" 
-                id="message" 
+                id="message-label" 
                 class="contact-modal__label"
                 >Votre message</label>
             <textarea 
                 type="textarea" 
                 class="contact-modal__input contact-modal__input--textarea" 
                 id="message" 
-                aria-labelledby="message" 
+                aria-labelledby="message-label"
                 required></textarea>
             <input 
                 type="submit" 

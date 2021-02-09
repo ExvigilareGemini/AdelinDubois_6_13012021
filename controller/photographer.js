@@ -275,8 +275,8 @@ function sortAndDisplay(propertyName) {
   arrayOfMedias.sort((a, b) => ((a[propertyName] > b[propertyName]) ? 1 : -1));
   arrayOfMedias.forEach((el) => {
     const mediaSortAndDisplay = document.querySelector(`[data-id='${el.id}']`);
-    mediaSortAndDisplay.querySelector('.media-photograph__media').setAttribute('tabindex', orderPosition + 1);
-    mediaSortAndDisplay.querySelector('.media-photograph__icon').setAttribute('tabindex', orderPosition + 1);
+    mediaSortAndDisplay.querySelector('.media-photograph__media').setAttribute('tabindex', orderPosition);
+    mediaSortAndDisplay.querySelector('.media-photograph__icon').setAttribute('tabindex', orderPosition);
     mediaSortAndDisplay.style.order = orderPosition;
     orderPosition += 1;
   });
