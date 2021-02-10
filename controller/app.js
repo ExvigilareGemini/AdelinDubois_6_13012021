@@ -140,18 +140,18 @@ function isRedirectFromPhotographerPage() {
 // function inserting HTML create in F06 (photographHTMLCompiler),
 // then call F07 (isRedirectFromPhotographerPage)
 // argument: is datas form JSON passing to F09 (fetchDataToCreateIndexHTML)
-function insertCreatedHTMLinHTML(data) {
+function insertCreatedHTMLIndexHTML(data) {
   document.querySelector('.photograph-container').insertAdjacentHTML('afterbegin', photographHTMLCompiler(data.photographers));
   isRedirectFromPhotographerPage();
 }
 
 // F09
 // function that get datas in the /src/data.json and chain with .then
-// the response is tranform into json and call F08
+// the response is tranform into json, then call F08
 // called in index.html
 function fetchDataToCreateIndexHTML() {
   fetch('./controller/src/data.json')
     .then((resp) => resp.json())
-    .then((data) => insertCreatedHTMLinHTML(data))
+    .then((data) => insertCreatedHTMLIndexHTML(data))
     .catch((error) => console.log(`Erreur : ${error}`));
 }
