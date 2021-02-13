@@ -26,7 +26,8 @@
     flex-grow: 1;
   }
   &__icon {
-    margin-top: 5px;
-    height: 12px;
+    margin-top: -5px;
+    height: 30px;
+    cursor: pointer;
   }
 }
