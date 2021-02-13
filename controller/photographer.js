@@ -361,7 +361,7 @@ function createHtmlMediaPhotograph(media) {
         <p class="media-photograph__description">${media.description}</p>
         <p class="media-photograph__price">${media.price}€</p>
         <p class="media-photograph__likes">${media.likes}</p>
-        <i tabindex="0" class="fas fa-heart media-photograph__icon" aria-label="like button" onclick="incrementLikes(${media.id})"></i>
+        <i tabindex="0" class="fas fa-heart media-photograph__icon" aria-label="likes" onclick="incrementLikes(${media.id})"></i>
     </div>
   </article>
         `;

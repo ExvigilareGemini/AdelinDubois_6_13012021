@@ -111,7 +111,7 @@ function photographHTMLGenerator(objectPhotographer) {
       <!-- TAGS -->
       <ul class="tag" aria-label="photographer categories">
       ${objectPhotographer.tags.map((tagPhotograph) => `
-      <button type="button" tabindex="0" aria-label="tag" onclick="sortingByTag('${tagPhotograph}')" data-isChecked="" data-tagName="${tagPhotograph}" class="tag__link tag__link--smaller">#${tagPhotograph}</button>`).join('')
+      <button type="button" tabindex="0" aria-label="tag ${tagPhotograph}" onclick="sortingByTag('${tagPhotograph}')" data-isChecked="" data-tagName="${tagPhotograph}" class="tag__link tag__link--smaller">#${tagPhotograph}</button>`).join('')
 }
       </ul>
   </article>`;
