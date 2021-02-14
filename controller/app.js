@@ -45,7 +45,7 @@ function isTagCorrespondToTagsChecked(actualTagsChecked, arrayToCompare) {
 
 // F03
 // get all articles .photograph, then get each li .tag of each articles and compared them to
-// tags that are actually checked with F06. Display 'none' for articles that don't contains
+// tags that are actually checked with F02. Display 'none' for articles that don't contains
 // at least one tag checked
 // argument: actualeTagsChecked[] from F04 (sortingByTag)
 function displayingArticles(actualTagsChecked) {
