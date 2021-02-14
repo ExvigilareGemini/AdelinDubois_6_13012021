@@ -334,7 +334,7 @@ function mediaTagFactory(mediaToTest) {
       src: `../assets/src/Sample_Photos/${actualPhotographerName}/${mediaToTest.image}`,
       type: 'img',
     });
-    return `<img tabindex="0" src="../assets/src/Sample_Photos/${actualPhotographerName}/${mediaToTest.image}" alt="Description of the image, closeup view" class="media-photograph__media" onclick="openLightbox(${mediaToTest.id})" data-id="${mediaToTest.id}">`;
+    return `<img tabindex="0" src="../assets/src/Sample_Photos/${actualPhotographerName}/${mediaToTest.image}" alt="${mediaToTest.description}, closeup view" class="media-photograph__media" onclick="openLightbox(${mediaToTest.id})" data-id="${mediaToTest.id}">`;
   }
   arrayOfMedias.push({
     id: mediaToTest.id,
@@ -344,7 +344,7 @@ function mediaTagFactory(mediaToTest) {
     src: `../assets/src/Sample_Photos/${actualPhotographerName}/${mediaToTest.video}`,
     type: 'video',
   });
-  return `<video tabindex="0" src="../assets/src/Sample_Photos/${actualPhotographerName}/${mediaToTest.video}" aria-label="Description of the video, closeup view" class="media-photograph__media" onclick="openLightbox(${mediaToTest.id})" data-id="${mediaToTest.id}"></video>`;
+  return `<video tabindex="0" src="../assets/src/Sample_Photos/${actualPhotographerName}/${mediaToTest.video}" aria-label="${mediaToTest.description}, closeup view" class="media-photograph__media" onclick="openLightbox(${mediaToTest.id})" data-id="${mediaToTest.id}"></video>`;
 }
 
 // F26
