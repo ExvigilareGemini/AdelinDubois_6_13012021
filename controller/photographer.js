@@ -166,6 +166,7 @@ function displayMediaInLightbox(idOfMedia) {
 function showAdjacentMediaLightbox(mouvement) {
   const lightboxId = document.querySelector('.lightbox').getAttribute('data-id');
   let position = arrayOfMedias.findIndex((media) => media.id == lightboxId);
+  console.log("ok");
   position += mouvement;
   if (position < 0) {
     position = arrayOfMedias.length - 1;
